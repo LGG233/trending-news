@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
 // local database url (27017 is the default mongoDB port)
-const uri = 'mongodb://localhost:27017/trending-news'
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/trending-news';
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(
     () => {
