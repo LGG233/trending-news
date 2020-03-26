@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import NavBar from './components/navbar';
 import SignUp from './components/signup';
 import SignIn from './components/signin';
+import userProfile from './components/userProfile';
 // import Home from './components/home';
 import Landing from './components/landing';
 
@@ -31,8 +32,8 @@ class App extends Component {
 
   getUser() {
     axios.get('/user/').then(response => {
-      console.log('Get user response: ')
-      console.log(response.data)
+      // console.log('Get user response: ')
+      // console.log(response.data)
       if (response.data.user) {
         console.log('Get User: there is a user saved in the server session: ')
 
@@ -80,6 +81,14 @@ class App extends Component {
                       updateUser={this.updateUser}
                     />}
                 />
+                <Route
+                  path="/userProfile"
+                  render={() =>
+                    <userProfile
+                      userProfile={this.userProfile}
+                    />}
+                />
+
               </Switch>
             </div>
           </div>

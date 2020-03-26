@@ -8,7 +8,12 @@ const userSchema = new Schema({
     username: { type: String, unique: false, required: false },
     password: { type: String, unique: false, required: false },
     name: { type: String, unique: false, required: false },
-    email: { type: String, unique: false, required: false }
+    email: { type: String, unique: false, required: false },
+    pubs: { type: Array, unique: false, required: false },
+    twitterNames: { type: Array, unique: false, required: false },
+    topics: { type: Array, unique: false, required: false },
+    searchTerms: { type: Array, unique: false, required: false },
+    savedArticles: { type: Array, unique: false, required: false }
 })
 
 // define schema methods
