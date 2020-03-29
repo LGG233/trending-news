@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class userProfile extends Component {
+class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,18 +19,19 @@ class userProfile extends Component {
     }
 
     componentDidMount() {
-        this.getUser()
-    }
-
-    getUser() {
-        // API to get user data - this route does not yet exist
-        axios.get('/userData/').then(response => {
-            console.log(response.data)
+        let id = localStorage.getItem("username");
+        console.log("getting data for username: ", id);
+        axios.get("/userdata").then(response => {
+            console.log("this is the response back from the db", response.data)
             this.setState({
                 data: response.data
             })
         })
     }
+
+    // getUserData() {
+    // API to get user data - this route does not yet exist
+    // }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -66,7 +67,7 @@ class userProfile extends Component {
     render() {
         return (
             <div>
-                <h4>{this.state.name}'s' Profile</h4>
+                <h4>{localStorage.getItem("username")}'s Profile</h4>
                 <table className="table">
                     <thead>
                         <tr>
@@ -108,4 +109,4 @@ class userProfile extends Component {
     }
 }
 
-export default userProfile;
+export default UserProfile;

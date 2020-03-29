@@ -45,6 +45,7 @@ class SignIn extends Component {
                 console.log(response)
                 console.log(response.status)
                 console.log(response.data.username)
+                localStorage.setItem("username", this.state.username);
                 if (response.status === 200) {
                     // update App.js state
                     this.props.updateUser({

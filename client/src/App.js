@@ -6,9 +6,10 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import NavBar from './components/navbar';
 import SignUp from './components/signup';
 import SignIn from './components/signin';
-import userProfile from './components/userProfile';
-// import Home from './components/home';
+import UserProfile from './components/userProfile';
 import Landing from './components/landing';
+import AddPubs from './components/addPublications';
+import AddTopic from './components/addTopics';
 
 class App extends Component {
   constructor() {
@@ -78,14 +79,28 @@ class App extends Component {
                   path="/signin"
                   render={() =>
                     <SignIn
-                      updateUser={this.updateUser}
+                      updateUser={this.signin}
                     />}
                 />
                 <Route
                   path="/userProfile"
                   render={() =>
-                    <userProfile
+                    <UserProfile
                       userProfile={this.userProfile}
+                    />}
+                />
+                <Route
+                  path="/addPubs"
+                  render={() =>
+                    <AddPubs
+                      addPublication={this.AddPubs}
+                    />}
+                />
+                <Route
+                  path="/addTopic"
+                  render={() =>
+                    <AddTopic
+                      addTopic={this.AddTopic}
                     />}
                 />
 

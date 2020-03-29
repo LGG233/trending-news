@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+// import { Redirect, Route, Link } from 'react-router-dom'
 import axios from 'axios'
 
 
@@ -39,6 +40,12 @@ class NavBar extends Component {
                             <section className="navbar-section">
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">logout</span></Link>
+                                <Link to="/userProfile" className="btn btn-link text-secondary">
+                                    <span className="text-secondary">my profile</span></Link>
+                                <Link to="/addPubs" className="btn btn-link text-secondary">
+                                    <span className="text-secondary">add publications</span></Link>
+                                <Link to="/addTopic" className="btn btn-link text-secondary">
+                                    <span className="text-secondary">add topics</span></Link>
 
                             </section>
                         ) : (

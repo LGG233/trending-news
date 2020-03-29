@@ -57,19 +57,24 @@ router.get('/', (req, res, next) => {
     }
 })
 
-router.get('/userData', (req, res, next) => {
-    console.log('getting user data')
-    if (user) {
-        User.findOne({ username: user.username }, (err, user) => {
-            if (err) {
-                console.log('User not logged in: ', err)
-            } else if (user) {
-                res.json({
-                })
-            }
-
-        })
-    }
+router.get('/userdata', (res) => {
+    console.log('getting user data for ', localStorage.getItem('username'))
+    // if (user) {
+    // User.findOne({ username: req.params.id }, (err, user) => {
+    User.findOne({
+        where: {
+            username: 'bob'
+        },
+    }).then(function (dbProfile) {
+        // if (err) {
+        //     console.log('User not logged in: ', err)
+        // } else if (user) {
+        console.log(dbProfile)
+        res.json(dbProfile)
+    })
+    // }
+    console.log("here is the data from the db", dbProfile)
+    // }
 });
 
 router.post('/logout', (req, res) => {
