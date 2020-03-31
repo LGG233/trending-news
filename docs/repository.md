@@ -10,6 +10,7 @@
 ### What are the dangers of a monorepo?
 
 - **_Unintended code bleeds._** Individual systems must remain independent. Server code should be a standalone folder that could be moved to it's own repository; same for Client code. This becomes especially important and apparent come deployment time.
+- **_Increased deployment complexity._** In a continuous delivery pipeline, source control changes typically trigger deployments. In a monorepo, multiple applications are under the same source control repository. This adds manageable complexity to the deployment process.
 
 ### Best Practices:
 
