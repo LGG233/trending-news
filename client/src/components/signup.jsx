@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { navigate } from '@reach/router';
 
 class SignUp extends Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class SignUp extends Component {
                 console.log(response)
                 if (response.data) {
                     console.log('successful signup')
-                    window.location.replace('/signin')
+                    navigate('/signin')
                     // this.setState({
                     //     redirectTo: '/signin'
                     // })
@@ -58,8 +59,8 @@ class SignUp extends Component {
     }
 
     handleCancel = event => {
-        event.preventDefault()
-        window.location.replace("/")
+        event.preventDefault();
+        navigate('/');
     }
 
     render() {

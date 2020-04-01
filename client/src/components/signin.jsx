@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-// import { response } from 'express';
-import { Redirect } from 'react-router-dom'
+import { Redirect, navigate } from '@reach/router'
 
 class SignIn extends Component {
     constructor(props) {
@@ -52,7 +51,7 @@ class SignIn extends Component {
                         username: response.data.username
                     })
                     // update status to redirect to logged-in-home
-                    window.location.replace('/')
+                    navigate('/');
                     // this.setState({
                     //     redirectTo: '/'
                     // })
@@ -64,13 +63,13 @@ class SignIn extends Component {
     }
 
     handleCancel = event => {
-        event.preventDefault()
-        window.location.replace("/")
+        event.preventDefault();
+        navigate('/');
     }
 
     render() {
         if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
+            return <Redirect to={this.state.redirectTo} />
         } else {
             return (
                 <div>
