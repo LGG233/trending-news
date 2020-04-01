@@ -37,8 +37,10 @@ class SignUp extends Component {
         console.log('Password: ', this.state.password)
         console.log('Email: ', this.state.email)
         axios.post('/user/', {
+            name: this.state.name,
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            email: this.state.email
         })
             .then(response => {
                 console.log(response)
