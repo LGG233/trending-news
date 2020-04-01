@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { navigate } from '@reach/router';
+import { ApiService } from '../services';
 
 class SignUp extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class SignUp extends Component {
         console.log('Username: ', this.state.username)
         console.log('Password: ', this.state.password)
         console.log('Email: ', this.state.email)
-        axios.post('/user/', {
+        ApiService.post('user/', {
             name: this.state.name,
             username: this.state.username,
             password: this.state.password,

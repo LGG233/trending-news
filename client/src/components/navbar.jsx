@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import axios from 'axios'
+import { ApiService } from '../services';
 
 
 class NavBar extends Component {
@@ -12,7 +13,7 @@ class NavBar extends Component {
     logout = event => {
         event.preventDefault()
         console.log('logging out')
-        axios.post('/user/logout').then(response => {
+        ApiService.post('user/logout').then(response => {
             console.log(response.data)
             if (response.status === 200) {
                 this.props.updateUser({
