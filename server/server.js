@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -9,7 +10,6 @@ const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 // route requires
 const user = require('./routes/user')
-require('dotenv').config()
 
 // Middleware
 app.use(morgan('dev'));
