@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Router } from '@reach/router';
 
-// Components
-import NavBar from './components/navbar';
-import SignUp from './components/signup';
-import SignIn from './components/signin';
-// import Home from './components/home';
-import Landing from './components/landing';
+import { NavBar, SignUp, SignIn, Landing } from './components';
 
 class App extends Component {
   constructor() {
@@ -52,7 +47,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <>
         <NavBar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if loggen in: */}
         {this.state.loggedIn &&
@@ -61,30 +56,15 @@ class App extends Component {
         <div className="container-fluid MainPage">
           <div className="row">
             <div className="col-md-12">
-              <Switch>
-                <Route
-                  exact path="/"
-                  component={Landing} />
-                {/* <Route exact path="/home" component={Home} /> */}
-                <Route
-                  path="/signup"
-                  render={() =>
-                    <SignUp
-                      signup={this.signup}
-                    />}
-                />
-                <Route
-                  path="/signin"
-                  render={() =>
-                    <SignIn
-                      updateUser={this.updateUser}
-                    />}
-                />
-              </Switch>
+              <Router>
+                <Landing path="/" />
+                <SignUp path="/signup" signup={this.signup} />
+                <SignIn path="/signin" updateUser={this.updateUser} />
+              </Router>
             </div>
           </div>
         </div>
-      </Router>
+      </>
     );
   }
 }
