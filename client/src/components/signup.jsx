@@ -44,10 +44,10 @@ class SignUp extends Component {
                 console.log(response)
                 if (response.data) {
                     console.log('successful signup')
-                    window.location.replace('/signin')
-                    // this.setState({
-                    //     redirectTo: '/signin'
-                    // })
+                    // window.location.replace('/signin')
+                    this.setState({
+                        redirectTo: '/signin'
+                    })
                 } else {
                     console.log('Sign-up error');
                 }

@@ -85,7 +85,7 @@ class SignIn extends Component {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="id"
+                                    id="username"
                                     placeholder="Enter Username"
                                     name="username"
                                     value={this.state.username}

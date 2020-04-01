@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import API from "../util/API";
+
+// import router from "../../../server/routes/user"
 
 class UserProfile extends Component {
     constructor(props) {
@@ -21,11 +23,12 @@ class UserProfile extends Component {
     componentDidMount() {
         let id = localStorage.getItem("username");
         console.log("getting data for username: ", id);
-        axios.get("/userdata").then(response => {
-            console.log("this is the response back from the db", response.data)
+        API.getUserData(id).then(res => {
+            console.log("this is the response back from the db", res.data)
             this.setState({
-                data: response.data
+                data: res.data
             })
+            // axios.get("/userdata").then(response => {
         })
     }
 

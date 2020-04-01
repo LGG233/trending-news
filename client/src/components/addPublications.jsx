@@ -33,14 +33,14 @@ class AddPubs extends Component {
         console.log('Publication: ', this.state.publication)
         console.log('Twitter Handle: ', this.state.twitterHandle)
         axios.post('/newPub/', {
-            username: this.state.publication,
-            twitterName: this.state.twitterHandle
+            publication: this.state.publication,
+            twitterHandle: this.state.twitterHandle
         })
             .then(response => {
                 console.log(response)
                 if (response.data) {
                     console.log('publication added to database')
-                    window.location.replace('/signin')
+                    window.location.replace('/')
                 } else {
                     console.log('Error; please try again');
                 }

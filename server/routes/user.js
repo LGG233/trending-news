@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../database/models/user')
 const passport = require('../passport')
 
+
 router.post('/', (req, res) => {
     console.log('user signup');
     const { username, password, name, email } = req.body
@@ -57,18 +58,10 @@ router.get('/', (req, res, next) => {
     }
 })
 
-router.get('/userdata', (res) => {
+router.get('/userdata/:id', (res) => {
     console.log('getting user data for ', localStorage.getItem('username'))
-    // if (user) {
-    // User.findOne({ username: req.params.id }, (err, user) => {
-    User.findOne({
-        where: {
-            username: 'bob'
-        },
-    }).then(function (dbProfile) {
-        // if (err) {
-        //     console.log('User not logged in: ', err)
-        // } else if (user) {
+    User.findOne({ username: req.params.id },
+    ).then(function (dbProfile) {
         console.log(dbProfile)
         res.json(dbProfile)
     })
@@ -84,6 +77,6 @@ router.post('/logout', (req, res) => {
     } else {
         res.send({ msg: 'no user to log out' })
     }
-});
+})
 
 module.exports = router
