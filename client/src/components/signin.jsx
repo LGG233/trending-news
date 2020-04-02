@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Redirect, navigate } from '@reach/router'
+import { ApiService } from '../services';
 
 class SignIn extends Component {
     constructor(props) {
@@ -34,11 +35,10 @@ class SignIn extends Component {
         event.preventDefault()
         console.log('sign-in form fired')
 
-        axios
-            .post('/user/signin', {
-                username: this.state.username,
-                password: this.state.password
-            })
+        ApiService.post('user/signin', {
+            username: this.state.username,
+            password: this.state.password
+        })
             .then(response => {
                 console.log('login response: ')
                 console.log(response)
