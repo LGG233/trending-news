@@ -7,7 +7,7 @@
   "scripts": {
     "db:mac": "brew services run mongodb-community",
     "start": "node server.js",
-    "deploy": "https://git.heroku.com/trending-topics-api.git"
+    "deploy": "git push https://git.heroku.com/trending-topics-api.git master"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

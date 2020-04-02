@@ -1,0 +1,7 @@
+   #!/bin/sh -e
+
+   if [ "$BUILD_ENV" = "server" ]; then
+     cd server; npm install;
+   elif [ "$BUILD_ENV" = "client" ]; then
+     cd client; npm install; npm run build;
+   fi

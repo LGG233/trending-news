@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:prod": "node server.js"
+    "start:prod": "node server.js",
+    "deploy": "git push https://git.heroku.com/trending-topics-client.git master"
   },
   "eslintConfig": {
     "extends": "react-app"
