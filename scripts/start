@@ -1,0 +1,7 @@
+   #!/bin/sh -e
+
+   if [ "$BUILD_ENV" = "server" ]; then
+     cd server; npm start;
+   elif [ "$BUILD_ENV" = "client" ]; then
+     cd client; npm run start:prod;
+   fi

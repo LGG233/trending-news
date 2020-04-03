@@ -4,14 +4,17 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const session = require("express-session")
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const dbConnection = require('./database')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 // route requires
 const user = require('./routes/user')
+const cors = require('cors');
+
 
 // Middleware
+app.use(cors());
 app.use(morgan('dev'));
 app.use(
     bodyParser.urlencoded({

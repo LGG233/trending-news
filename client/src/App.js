@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Router } from '@reach/router';
 
 import { NavBar, SignUp, SignIn, Landing } from './components';
+import { ApiService } from './services';
 
 class App extends Component {
   constructor() {
@@ -25,7 +26,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    ApiService.get('user/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {

@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/LGG233/trending-news#readme",
   "scripts": {
-    "install": "echo \"Oops! Go to client or server directory, then install! :)\n\" && exit 1",
-    "start": "echo \"Oops! Did you mean to start the client or server? :)\n\" && exit 1"
+    "install": "chmod +x ./scripts/install && ./scripts/install",
+    "start": "chmod +x ./scripts/start && ./scripts/start"
   }
 }

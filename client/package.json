@@ -13,12 +13,13 @@
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0"
   },
-  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:prod": "node server.js",
+    "deploy": "git push https://git.heroku.com/trending-topics-client.git master"
   },
   "eslintConfig": {
     "extends": "react-app"
