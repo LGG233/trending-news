@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Router } from '@reach/router';
 
 import { NavBar, SignUp, SignIn, Landing } from './components';
+import UserProfile from './components/userProfile';
 import { ApiService } from './services';
 
 class App extends Component {
@@ -60,6 +61,7 @@ class App extends Component {
                 <Landing path="/" />
                 <SignUp path="/signup" signup={this.signup} />
                 <SignIn path="/signin" updateUser={this.updateUser} />
+                <UserProfile path="/userProfile" />
               </Router>
             </div>
           </div>

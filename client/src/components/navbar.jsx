@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import axios from 'axios';
 import { ApiService } from '../services';
+import { Redirect, navigate } from '@reach/router'
 
 class NavBar extends Component {
   constructor() {
@@ -42,20 +43,22 @@ class NavBar extends Component {
                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                   <span className="text-secondary">logout</span>
                 </Link>
+                <Link to="/userProfile" className="btn btn-link text-secondary">
+                  <span className="text-secondary">profile</span></Link>
               </section>
             ) : (
-              <section className="navbar-section">
-                <Link to="/" className="btn btn-link text-secondary">
-                  <span className="text-secondary">home</span>
-                </Link>
-                <Link to="/signin" className="btn btn-link text-secondary">
-                  <span className="test-secondary">sign in</span>
-                </Link>
-                <Link to="/signup" className="btn btn-link text-secondary">
-                  <span className="text-secondary">sign up</span>
-                </Link>
-              </section>
-            )}
+                <section className="navbar-section">
+                  <Link to="/" className="btn btn-link text-secondary">
+                    <span className="text-secondary">home</span>
+                  </Link>
+                  <Link to="/signin" className="btn btn-link text-secondary">
+                    <span className="test-secondary">sign in</span>
+                  </Link>
+                  <Link to="/signup" className="btn btn-link text-secondary">
+                    <span className="text-secondary">sign up</span>
+                  </Link>
+                </section>
+              )}
           </div>
         </header>
       </div>

@@ -49,6 +49,7 @@ class SignIn extends Component {
             loggedIn: true,
             username: response.data.username,
           });
+          localStorage.setItem("username", this.state.username)
           // update status to redirect to logged-in-home
           navigate('/');
           // this.setState({

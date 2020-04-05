@@ -9,7 +9,20 @@ const userSchema = new Schema({
   password: { type: String, unique: false, required: false },
   name: { type: String, unique: false, required: false },
   email: { type: String, unique: false, required: false },
-});
+  dummyData: { type: String, unique: false, required: false },
+  publications: {
+    name: { type: String, unique: false, required: false },
+    twitterHandle: { type: String, unique: true, required: true }
+  },
+  savedArticles: {
+    title: { type: String, unique: false, required: false },
+    link: { type: String, unique: true, required: true }
+  },
+  topics: {
+    name: { type: String, unique: false, required: false },
+    searchTerm: { type: String, unique: false, required: false }
+  }
+})
 
 // define schema methods
 userSchema.methods = {
