@@ -30,15 +30,15 @@ class UserProfile extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    // componentDidMount() {
-    //     ApiService.get("user/data/")
-    //         .then(res => {
-    //             this.setState({
-    //                 data: res.data
-    //             });
-    //         })
-    //     console.log("here is the state", this.state)
-    // };
+    componentDidMount() {
+        ApiService.get("user/data/")
+            .then(res => {
+                this.setState({
+                    data: res.data
+                });
+            })
+        console.log("here is the state", this.state)
+    };
 
     handleInputChange = event => {
         const { name, value } = event.target;
