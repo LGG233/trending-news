@@ -30,15 +30,15 @@ class UserProfile extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount() {
-        ApiService.get("user/data/")
-            .then(res => {
-                this.setState({
-                    data: res.data
-                });
-            })
-        console.log("here is the state", this.state)
-    };
+    // componentDidMount() {
+    //     ApiService.get("user/data/")
+    //         .then(res => {
+    //             this.setState({
+    //                 data: res.data
+    //             });
+    //         })
+    //     console.log("here is the state", this.state)
+    // };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -66,7 +66,7 @@ class UserProfile extends Component {
         } else {
             return (
                 <div>
-                    <h1>{localStorage.getItem('username"')}'s User Profile</h1>
+                    <h1>User Profile for {localStorage.getItem("username")}</h1>
                     <br></br>
                     <br></br>
                     <div className="container-fluid">
