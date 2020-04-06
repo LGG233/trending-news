@@ -31,13 +31,14 @@ class UserProfile extends Component {
     }
 
     componentDidMount() {
-        ApiService.get("user/data/")
+        let username = localStorage.getItem("username");
+        ApiService.get(`user/data/${username}`)
             .then(res => {
                 this.setState({
                     data: res.data
                 });
+                console.log("here is the state", this.state)
             })
-        console.log("here is the state", this.state)
     };
 
     handleInputChange = event => {

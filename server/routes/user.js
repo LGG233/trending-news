@@ -30,16 +30,15 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get("user/data", function (req, res, next) {
-    let user = localStorage.getItem("username");
-    User.collection('users').find(user).toArray(err, result)
-        .then(res => {
-            this.setState({
-                data: res.data
-            });
-        })
-});
-
+router.get('/data/:username', function (req, res, next) {
+    User.findOne({
+        username: req.params.username
+    }).then(res => {
+        this.setState({
+            data: res.data
+        });
+    })
+})
 
 router.post(
   '/signin',
