@@ -31,13 +31,12 @@ router.post('/', (req, res) => {
 });
 
 router.get('/data/:username', function (req, res, next) {
-    User.findOne({
-        username: req.params.username
-    }).then(res => {
-        this.setState({
-            data: res.data
-        });
-    })
+    User.findOne({ username: req.params.username })
+        .then(res => {
+            this.setState({
+                data: res.data
+            });
+        })
 })
 
 router.post(
