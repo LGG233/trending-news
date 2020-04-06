@@ -14,6 +14,11 @@
   "homepage": "https://github.com/LGG233/trending-news#readme",
   "scripts": {
     "install": "chmod +x ./scripts/install && ./scripts/install",
-    "start": "chmod +x ./scripts/start && ./scripts/start"
+    "start": "chmod +x ./scripts/start && ./scripts/start",
+    "format": "npx prettier@2.0.2 --write \"{,.*/,**/}!(package-lock).+(js|jsx|json|html|md)\""
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true
   }
 }

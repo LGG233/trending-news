@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
 class Home extends Component {
-    state = {}
+  state = {};
 
-    render() {
-        return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="container-fluid">
-                        <p>You are now logged in</p>
-                    </div>
-                    <div>
-                        {/* <button className="btn btn-sm displayData"
+  render() {
+    return (
+      <div className="container-fluid">
+        <div className="row">
+          <div className="container-fluid">
+            <p>You are now logged in</p>
+          </div>
+          <div>
+            {/* <button className="btn btn-sm displayData"
                             onClick={function () {
                                 window.location.replace("/signup");
                             }}
@@ -25,9 +25,10 @@ class Home extends Component {
                         >
                             My Publications{" "}
                         </button> */}
-                    </div >
-                </div>
-            </div>)
-    }
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 export default Home;
