@@ -35,9 +35,11 @@ class UserProfile extends Component {
         ApiService.get(`user/data/${username}`)
             .then(res => {
                 this.setState({
-                    data: res.data
+                    username: res.data.username,
+                    name: res.data.name,
+                    email: res.data.email,
+                    dummyData: res.data.dummyData
                 });
-                console.log("here is the state", this.state)
             })
     };
 
@@ -72,22 +74,22 @@ class UserProfile extends Component {
                     <br></br>
                     <div className="container-fluid">
                         <div className="row">
-                            <p>Name: {this.state.name}
+                            <p>Name: {this.state.name} <br></br>
                                 <button className="btn btn-sm btn-secondary card-btn" onClick={() => this.editName(this.state.userId)}>Edit</button>
                             </p>
                         </div>
                         <div className="row">
-                            <p>Username: {this.state.username}
+                            <p>Username: {this.state.username}<br></br>
                                 <button className="btn btn-sm btn-secondary card-btn" onClick={() => this.editUsername(this.state.userId)}>Edit</button>
                             </p>
                         </div>
                         <div className="row">
-                            <p>Email: {this.state.email}
+                            <p>Email: {this.state.email}<br></br>
                                 <button className="btn btn-sm btn-secondary card-btn" onClick={() => this.editEmail(this.state.userId)}>Edit</button>
                             </p>
                         </div>
                         <div className="row">
-                            <p>Dummy Data: {this.state.dummyData}
+                            <p>Dummy Data: {this.state.dummyData}<br></br>
                                 <button className="btn btn-sm btn-secondary card-btn" onClick={() => this.editDummy(this.state.userId)}>Edit</button>
                             </p>
                         </div>

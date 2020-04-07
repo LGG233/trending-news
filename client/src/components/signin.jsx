@@ -39,10 +39,10 @@ class SignIn extends Component {
       password: this.state.password,
     })
       .then((response) => {
-        console.log('login response: ');
-        console.log(response);
-        console.log(response.status);
-        console.log(response.data.username);
+        // console.log('login response: ');
+        // console.log(response);
+        // console.log(response.status);
+        // console.log(response.data.username);
         if (response.status === 200) {
           // update App.js state
           this.props.updateUser({
