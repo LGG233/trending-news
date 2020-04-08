@@ -11,14 +11,17 @@ const userSchema = new Schema({
   email: { type: String, unique: false, required: false },
   dummyData: { type: String, unique: false, required: false },
   publications: {
+    id: { type: Number, unique: true, required: true },
     name: { type: String, unique: false, required: false },
     twitterHandle: { type: String, unique: true, required: true }
   },
   savedArticles: {
+    id: { type: Number, unique: true, required: true },
     title: { type: String, unique: false, required: false },
     link: { type: String, unique: true, required: true }
   },
   topics: {
+    id: { type: Number, unique: true, required: true },
     name: { type: String, unique: false, required: false },
     searchTerm: { type: String, unique: false, required: false }
   }
