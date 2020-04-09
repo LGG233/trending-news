@@ -29,15 +29,15 @@ class MyArticles extends Component {
                     <thead>
                         <tr>
                             <th scope="col">Title</th>
-                            <th scope="col">Link</th>
+                            <th scope="col">Tags</th>
                             <th><button className="btn btn-sm btn-secondary card-btn" onClick={() => this.editArticles(this.state.userId)}>Edit Articles</button></th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.savedArticles.map(articles => (
                             <tr>
-                                <th scope="row">{articles.title}</th>
-                                <td>{articles.link}</td>
+                                <th scope="row"><a href={articles.link}>{articles.title}</a></th>
+                                <td>{articles.tags}</td>
                                 <td><button className="btn btn-sm btn-secondary card-btn" onClick={() => this.deleteArticles(this.state.userId)}>Delete</button></td>
                             </tr>
                         ))}

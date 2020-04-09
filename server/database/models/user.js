@@ -9,7 +9,6 @@ const userSchema = new Schema({
   password: { type: String, unique: false, required: false },
   name: { type: String, unique: false, required: false },
   email: { type: String, unique: false, required: false },
-  dummyData: { type: String, unique: false, required: false },
   publications: {
     id: { type: Number, unique: true, required: true },
     name: { type: String, unique: false, required: false },
@@ -18,12 +17,13 @@ const userSchema = new Schema({
   savedArticles: {
     id: { type: Number, unique: true, required: true },
     title: { type: String, unique: false, required: false },
-    link: { type: String, unique: true, required: true }
+    link: { type: String, unique: true, required: true },
+    tags: { type: Array, unique: false, required: false }
   },
   topics: {
     id: { type: Number, unique: true, required: true },
     name: { type: String, unique: false, required: false },
-    searchTerm: { type: String, unique: false, required: false }
+    searchTerm: { type: Array, unique: false, required: false }
   }
 })
 

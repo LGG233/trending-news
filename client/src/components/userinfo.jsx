@@ -29,7 +29,7 @@ class MyInfo extends Component {
     render() {
         return (
             <div>
-                <h3>My User Info</h3>
+                <h3>My Info</h3>
                 <table className="table">
                     <thead>
                         <tr>
