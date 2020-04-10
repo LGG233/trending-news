@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Router } from '@reach/router';
-
-import { NavBar, SignUp, SignIn, Landing } from './components';
-import UserProfile from './components/userProfile';
+import { NavBar, SignUp, SignIn, Landing, UserProfile } from './components';
 import { ApiService } from './services';
 
 class App extends Component {
@@ -28,17 +25,12 @@ class App extends Component {
 
   getUser() {
     ApiService.get('user/').then((response) => {
-      console.log('Get user response: ');
-      console.log(response.data);
       if (response.data.user) {
-        console.log('Get User: there is a user saved in the server session: ');
-
         this.setState({
           loggedIn: true,
           username: response.data.user.username,
         });
       } else {
-        console.log('Get user: no user');
         this.setState({
           loggedIn: false,
           username: null,

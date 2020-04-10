@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-import axios from 'axios';
 import { ApiService } from '../services';
-import { Redirect, navigate } from '@reach/router'
 
 class NavBar extends Component {
   constructor() {
@@ -12,10 +10,8 @@ class NavBar extends Component {
 
   logout = (event) => {
     event.preventDefault();
-    console.log('logging out');
     ApiService.post('user/logout')
       .then((response) => {
-        console.log(response.data);
         if (response.status === 200) {
           this.props.updateUser({
             loggedIn: false,
@@ -30,8 +26,6 @@ class NavBar extends Component {
 
   render() {
     const loggedIn = this.props.loggedIn;
-    console.log('navbar render, props: ');
-    console.log(this.props);
 
     return (
       <div>
@@ -44,21 +38,22 @@ class NavBar extends Component {
                   <span className="text-secondary">logout</span>
                 </Link>
                 <Link to="/userProfile" className="btn btn-link text-secondary">
-                  <span className="text-secondary">profile</span></Link>
+                  <span className="text-secondary">profile</span>
+                </Link>
               </section>
             ) : (
-                <section className="navbar-section">
-                  <Link to="/" className="btn btn-link text-secondary">
-                    <span className="text-secondary">home</span>
-                  </Link>
-                  <Link to="/signin" className="btn btn-link text-secondary">
-                    <span className="test-secondary">sign in</span>
-                  </Link>
-                  <Link to="/signup" className="btn btn-link text-secondary">
-                    <span className="text-secondary">sign up</span>
-                  </Link>
-                </section>
-              )}
+              <section className="navbar-section">
+                <Link to="/" className="btn btn-link text-secondary">
+                  <span className="text-secondary">home</span>
+                </Link>
+                <Link to="/signin" className="btn btn-link text-secondary">
+                  <span className="test-secondary">sign in</span>
+                </Link>
+                <Link to="/signup" className="btn btn-link text-secondary">
+                  <span className="text-secondary">sign up</span>
+                </Link>
+              </section>
+            )}
           </div>
         </header>
       </div>
