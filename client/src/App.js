@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
-import { NavBar, SignUp, SignIn, Landing, UserProfile } from './components';
+import { NavBar, SignUp, SignIn, Landing, UserProfile, Auth } from './components';
 import { ApiService } from './services';
+import { ACCESS_TOKEN_STORAGE_KEY } from './core';
 
 class App extends Component {
   constructor() {
@@ -17,6 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getUser();
+    this.getAwsUser();
   }
 
   updateUser(userObject) {
@@ -39,6 +41,16 @@ class App extends Component {
     });
   }
 
+  async getAwsUser() {
+    const token = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+    if (!token) return;
+    try {
+      const headers = { Authorization: `Bearer ${token}` };
+      const userAwsResponse = await ApiService.get('user-aws', { headers });
+      this.setState({ loggedIn: true, username: userAwsResponse.data.username });
+    } catch (error) {}
+  }
+
   render() {
     return (
       <>
@@ -54,6 +66,7 @@ class App extends Component {
                 <SignUp path="/signup" signup={this.signup} />
                 <SignIn path="/signin" updateUser={this.updateUser} />
                 <UserProfile path="/userProfile" />
+                <Auth path="/auth" updateUser={this.updateUser} />
               </Router>
             </div>
           </div>

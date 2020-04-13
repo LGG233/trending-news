@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, navigate } from '@reach/router';
 import { ApiService } from '../services';
+import { LOGIN_URL } from '../core';
 
 class SignIn extends Component {
   constructor(props) {
@@ -102,6 +103,9 @@ class SignIn extends Component {
               </button>
               <button className="btn btn-sm btn-secondary entryCancel" onClick={this.handleCancel}>
                 Cancel{' '}
+              </button>
+              <button className="btn btn-sm btn-warning" onClick={() => navigate(LOGIN_URL)}>
+                AWS Cognito
               </button>
             </div>
           </div>

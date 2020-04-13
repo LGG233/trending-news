@@ -7,5 +7,6 @@ import MyInfo from './userinfo';
 import MyPublications from './publications';
 import MyTopics from './topics';
 import MyArticles from './articles';
+import Auth from './auth';
 
-export { Landing, NavBar, SignIn, SignUp, UserProfile, MyArticles, MyInfo, MyPublications, MyTopics };
+export { Landing, NavBar, SignIn, SignUp, UserProfile, MyArticles, MyInfo, MyPublications, MyTopics, Auth };

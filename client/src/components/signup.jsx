@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import { ApiService } from '../services';
+import { SIGNUP_URL } from '../core';
 
 class SignUp extends Component {
   constructor(props) {
@@ -119,6 +120,9 @@ class SignUp extends Component {
             </button>
             <button className="btn btn-sm btn-secondary entryCancel" onClick={this.handleCancel}>
               Cancel{' '}
+            </button>
+            <button className="btn btn-sm btn-warning" onClick={() => navigate(SIGNUP_URL)}>
+              AWS Cognito
             </button>
           </div>
         </div>
