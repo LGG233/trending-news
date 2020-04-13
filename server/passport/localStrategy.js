@@ -7,6 +7,8 @@ const strategy = new LocalStrategy(
   },
   function (username, password, done) {
     User.findOne({ username: username }, (err, user) => {
+      console.log(err)
+      console.log(user)
       if (err) {
         return done(err);
       }

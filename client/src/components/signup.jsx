@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { navigate } from '@reach/router';
 import { ApiService } from '../services';
 
@@ -33,11 +32,6 @@ class SignUp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('sign-up form fired');
-    console.log('Name: ', this.state.name);
-    console.log('Username: ', this.state.username);
-    console.log('Password: ', this.state.password);
-    console.log('Email: ', this.state.email);
     ApiService.post('user/', {
       name: this.state.name,
       username: this.state.username,
@@ -45,13 +39,8 @@ class SignUp extends Component {
       email: this.state.email,
     })
       .then((response) => {
-        console.log(response);
         if (response.data) {
-          console.log('successful signup');
           navigate('/signin');
-          // this.setState({
-          //     redirectTo: '/signin'
-          // })
         } else {
           console.log('Sign-up error');
         }

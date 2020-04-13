@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Redirect, navigate } from '@reach/router';
 import { ApiService } from '../services';
 
@@ -39,21 +38,15 @@ class SignIn extends Component {
       password: this.state.password,
     })
       .then((response) => {
-        console.log('login response: ');
-        console.log(response);
-        console.log(response.status);
-        console.log(response.data.username);
         if (response.status === 200) {
           // update App.js state
           this.props.updateUser({
             loggedIn: true,
             username: response.data.username,
           });
+          localStorage.setItem('username', this.state.username);
           // update status to redirect to logged-in-home
           navigate('/');
-          // this.setState({
-          //     redirectTo: '/'
-          // })
         }
       })
       .catch((error) => {
