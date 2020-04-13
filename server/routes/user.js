@@ -32,11 +32,10 @@ router.post('/', (req, res) => {
 
 router.get('/data/:username', (req, res, next) => {
     console.log("this is for user: " + req.params.username)
-    User.findOne({ username: req.params.username })
-        .then(function (userData) {
-            console.log(userData);
-            res.json(userData);
-        });
+    User.findOne({ username: req.params.username }).then(
+        (userData) => res.json(userData),
+        (error) => res.sendStatus(404)
+    )
 });
 
 router.post(
