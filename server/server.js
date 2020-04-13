@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require('./passport');
 // route requires
 const user = require('./routes/user');
+const userAws = require('./routes/user-aws');
 const cors = require('cors');
 
 // Middleware
@@ -38,6 +39,7 @@ app.use(passport.session()); // calls serializeUser and deserializeUser
 
 // routes
 app.use('/user', user);
+app.use('/user-aws', userAws);
 
 // starting server
 app.listen(PORT, () => {

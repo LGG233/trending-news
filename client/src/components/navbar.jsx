@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import { ApiService } from '../services';
+import { LOGOUT_URL, ACCESS_TOKEN_STORAGE_KEY } from '../core';
 
 class NavBar extends Component {
   constructor() {
@@ -24,6 +25,10 @@ class NavBar extends Component {
       });
   };
 
+  logoutAws = () => {
+    localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+  };
+
   render() {
     const loggedIn = this.props.loggedIn;
 
@@ -40,6 +45,9 @@ class NavBar extends Component {
                 <Link to="/userProfile" className="btn btn-link text-secondary">
                   <span className="text-secondary">profile</span>
                 </Link>
+                <a href={LOGOUT_URL} className="btn btn-link text-secondary" onClick={this.logoutAws}>
+                  <span className="text-secondary">Logout AWS</span>
+                </a>
               </section>
             ) : (
               <section className="navbar-section">
