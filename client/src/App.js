@@ -9,7 +9,14 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      username: null,
+      user: {
+        name: '',
+        username: '',
+        email: '',
+        publications: [],
+        topics: [],
+        savedArticles: [],
+      },
     };
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -18,37 +25,37 @@ class App extends Component {
 
   componentDidMount() {
     this.getUser();
-    this.getAwsUser();
   }
 
   updateUser(userObject) {
     this.setState(userObject);
   }
 
-  getUser() {
-    ApiService.get('user/').then((response) => {
-      if (response.data.user) {
-        this.setState({
-          loggedIn: true,
-          username: response.data.user.username,
-        });
-      } else {
-        this.setState({
-          loggedIn: false,
-          username: null,
-        });
-      }
-    });
-  }
-
-  async getAwsUser() {
+  async getUser() {
+    // retrieve access token from local storage
     const token = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
     if (!token) return;
-    try {
-      const headers = { Authorization: `Bearer ${token}` };
-      const userAwsResponse = await ApiService.get('user-aws', { headers });
-      this.setState({ loggedIn: true, username: userAwsResponse.data.username });
-    } catch (error) {}
+
+    // get user data
+    const headers = { Authorization: `Bearer ${token}` };
+    const userResponse = await ApiService.get('user', { headers }).catch(() => null);
+
+    // remain "logged out" on user data fetch error
+    if (!userResponse) return;
+
+    // user is logged in!
+    const { name, username, email, publications, topics, savedArticles } = userResponse.data;
+    this.setState({
+      loggedIn: true,
+      user: {
+        name,
+        username,
+        email,
+        publications,
+        topics,
+        savedArticles,
+      },
+    });
   }
 
   render() {
@@ -56,7 +63,7 @@ class App extends Component {
       <>
         <NavBar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if loggen in: */}
-        {this.state.loggedIn && <p>Join the party, {this.state.username}!</p>}
+        {this.state.loggedIn && <p>Join the party, {this.state.user.username}!</p>}
         <br />
         <div className="container-fluid MainPage">
           <div className="row">
@@ -65,7 +72,7 @@ class App extends Component {
                 <Landing path="/" />
                 <SignUp path="/signup" signup={this.signup} />
                 <SignIn path="/signin" updateUser={this.updateUser} />
-                <UserProfile path="/userProfile" />
+                <UserProfile path="/userProfile" user={this.state.user} />
                 <Auth path="/auth" updateUser={this.updateUser} />
               </Router>
             </div>
