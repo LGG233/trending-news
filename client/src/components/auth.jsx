@@ -42,14 +42,24 @@ class Auth extends Component {
 
       // get user data
       headers = { Authorization: `Bearer ${tokenResponse.data.access_token}` };
-      const userAwsResponse = await ApiService.get('user-aws', { headers });
+      const userResponse = await ApiService.get('user', { headers });
 
-      // update state and go to home page
+      // update auth & user states
       this.setState({ isLoaded: true });
+      const { name, username, email, publications, topics, savedArticles } = userResponse.data;
       this.props.updateUser({
         loggedIn: true,
-        username: userAwsResponse.data.username,
+        user: {
+          name,
+          username,
+          email,
+          publications,
+          topics,
+          savedArticles,
+        },
       });
+
+      // go to home page
       navigate('/');
     } catch (error) {
       this.setState({ error });
@@ -58,7 +68,7 @@ class Auth extends Component {
 
   render() {
     const { error, isLoaded } = this.state;
-    if (error) return <h1>Login failure: {error}</h1>;
+    if (error) return <h1>Login failure: {JSON.stringify(error)}</h1>;
     if (!isLoaded) return <h1>Loading...</h1>;
     return <h1>Login successful!</h1>;
   }
