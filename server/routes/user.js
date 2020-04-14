@@ -3,11 +3,17 @@ const router = express.Router();
 const { ApiService } = require('../services');
 const User = require('../database/models/user');
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
   // validate auth token (return 401 if invalid)
-  const headers = { Authorization: `${req.get('Authorization')}` };
-  const url = `${process.env.AWS_COGNITO_BASE_URL}/oauth2/userInfo`;
-  const userInfoResponse = await ApiService.get(url, { headers }).catch(() => res.sendStatus(401));
+  const userInfoResponse = await ApiService.get(`${process.env.AWS_COGNITO_BASE_URL}/oauth2/userInfo`, {
+    headers: { Authorization: `${req.get('Authorization')}` },
+  }).catch((error) => {
+    res.sendStatus(401);
+    next(JSON.stringify(error.response.data));
+  });
+
+  // if authorization fails, exit function
+  if (!userInfoResponse) return;
 
   // get username & email from valid token response
   const { username, email } = userInfoResponse.data;
@@ -20,8 +26,8 @@ router.get('/', async (req, res) => {
     }
     res.json(user);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
+    next(error);
   }
 });
 
