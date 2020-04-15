@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
       with:
-        heroku_api_key: a040e29c-920b-4c5d-a3fa-383467cd5c53
+        heroku_api_key: 08b55adf-b7e9-4786-a55a-1cf4f02a483c
         heroku_app_name: trending-topics-api
         heroku_email: kylewhitaker51@gmail.com
 
@@ -26,6 +26,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
       with:
-        heroku_api_key: a040e29c-920b-4c5d-a3fa-383467cd5c53
+        heroku_api_key: 08b55adf-b7e9-4786-a55a-1cf4f02a483c
         heroku_app_name: trending-topics-client
         heroku_email: kylewhitaker51@gmail.com
