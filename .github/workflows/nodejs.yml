@@ -8,19 +8,13 @@ on:
     branches: [ master ]
 
 jobs:
-  deploy:
+  deploy-api:
     name: Heroku Deployment API
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: cd server && npm run deploy -- -f
-    - run: cd client && npm run deploy -- -f
-      env:
-        CI: true
+        heroku_api_key: 4ecee5bd-c683-47c8-98d1-fcb47c7642aa
+        heroku_app_name: trending-topics-api
+        heroku_email: kylewhitaker51@gmail.com
