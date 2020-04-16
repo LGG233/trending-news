@@ -3,6 +3,8 @@ import { Router } from '@reach/router';
 import { NavBar, SignUp, SignIn, Landing, UserProfile, Auth } from './components';
 import { ApiService } from './services';
 import { ACCESS_TOKEN_STORAGE_KEY } from './core';
+import PubDisplay from './components/pub-display';
+import PubEntry from './components/pub-entry';
 
 class App extends Component {
   constructor() {
@@ -74,6 +76,8 @@ class App extends Component {
                 <SignIn path="/signin" updateUser={this.updateUser} />
                 <UserProfile path="/userProfile" user={this.state.user} />
                 <Auth path="/auth" updateUser={this.updateUser} />
+                <PubEntry path="/pub-entry" />
+                <PubDisplay path="pub-display" />
               </Router>
             </div>
           </div>
