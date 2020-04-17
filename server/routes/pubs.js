@@ -3,12 +3,13 @@ const router = express.Router();
 // const { ApiService } = require('../services');
 const Pub = require('../database/models/pub');
 
-router.get('/pubs/data', (res, next) => {
-    Pub.find().then(
-        (pubsList) => res.json(pubsList),
-        (error) => res.sendStatus(404)
-    );
-    console.log("here is the json from the db", res);
+router.get('/data', (req, res, next) => {
+    Pub.find()
+        .then(function (dbPubs) {
+            res.json(dbPubs);
+        })
+    // (error) => res.sendStatus(404)
+    // );
 });
 
 router.post('/pubs', (req, res, next) => {

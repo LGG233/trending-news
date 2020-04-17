@@ -6,18 +6,19 @@ class PubDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
+      name: '',
       twitterHandle: '',
       redirectTo: false,
+      loaded: false,
     };
   }
 
-  componentDidMount() {
-    console.log('db query launched');
-    ApiService.get('pubs/data').then(
+  async componentDidMount() {
+    await ApiService.get('pubs/data').then(
       (res) => {
         this.setState({
           data: res.data,
+          loaded: true,
         });
       },
       (error) => {
@@ -28,28 +29,36 @@ class PubDisplay extends Component {
   }
 
   render() {
-    console.log('here is the data :', this.state);
-    return (
-      <div>
-        <h4>Publications List</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Publication</th>
-              <th scope="col">Twitter Handle</th>
-            </tr>
-          </thead>
-          {/* <tbody>
-            {this.state.data.map((pubs) => (
+    console.log('here is the data :', this.state.data);
+    const isLoaded = this.state.loaded;
+    if (!isLoaded) {
+      return (
+        <div>
+          <h4>Loading...</h4>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <table className="table">
+            <thead>
               <tr>
-                <th scope="row">{pubs.title}</th>
-                <th scope="row">{pubs.twitterHandle}</th>
+                <th scope="col">Publication</th>
+                <th scope="col">Twitter Handle</th>
               </tr>
-            ))}
-          </tbody> */}
-        </table>
-      </div>
-    );
+            </thead>
+            <tbody>
+              {this.state.data.map((pubs) => (
+                <tr>
+                  <th scope="row">{pubs.name}</th>
+                  <th scope="row">{pubs.twitterHandle}</th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
   }
 }
 

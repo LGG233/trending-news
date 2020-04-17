@@ -25,6 +25,9 @@ class NavBar extends Component {
                 <Link to="/userProfile" className="btn btn-link text-secondary">
                   <span className="text-secondary">profile</span>
                 </Link>
+                <Link to="/pub-display" className="btn btn-link text-secondary">
+                  <span className="text-secondary">publications</span>
+                </Link>
                 <a href={LOGOUT_URL} className="btn btn-link text-secondary" onClick={this.logout}>
                   <span className="text-secondary">logout</span>
                 </a>
