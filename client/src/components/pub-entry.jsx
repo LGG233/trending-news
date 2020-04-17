@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from '@reach/router';
+// import { Redirect } from '@reach/router';
 import { ApiService } from '../services';
 
 class PubEntry extends Component {
@@ -36,7 +36,7 @@ class PubEntry extends Component {
       .then((response) => {
         console.log(response);
         if (response.statusText === 'OK') {
-          Redirect('/pub-display');
+          window.location.replace('/pub-display'); // 'Redirect' did not work
         }
       })
       .catch((error) => {
@@ -45,7 +45,7 @@ class PubEntry extends Component {
   };
 
   handleCancel = (event) => {
-    Redirect('/pub-display');
+    window.location.replace('/pub-display');
   };
 
   render() {
