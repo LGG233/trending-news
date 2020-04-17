@@ -12,9 +12,12 @@ router.get('/data', (req, res, next) => {
     // );
 });
 
-router.post('/pubs', (req, res, next) => {
+router.post('/', (req, res, next) => {
     console.log('POST request received')
-    Pub.create(req)
+    Pub.create({
+        name: req.body.name,
+        twitterHandle: req.body.twitterHandle
+    })
         .then(function (dbPub) {
             res.json(dbPub);
         });

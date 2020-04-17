@@ -6,7 +6,7 @@ class PubEntry extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
+      name: '',
       twitterHandle: '',
     };
   }
@@ -30,12 +30,12 @@ class PubEntry extends Component {
     event.preventDefault();
     console.log('submit button clicked');
     ApiService.post('pubs', {
-      entryTitle: this.state.entryTitle,
-      entryTwitterHandle: this.state.entryTwitterHandle,
+      name: this.state.entryTitle,
+      twitterHandle: this.state.entryTwitterHandle,
     })
       .then((response) => {
-        console.log('here is the response back from the db: ', response);
-        if (response === 200) {
+        console.log(response);
+        if (response.statusText === 'OK') {
           Redirect('/pub-display');
         }
       })

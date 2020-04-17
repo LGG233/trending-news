@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Redirect } from '@reach/router';
 import { ApiService } from '../services';
+import { Link } from '@reach/router';
 
 class PubDisplay extends Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class PubDisplay extends Component {
   }
 
   render() {
-    console.log('here is the data :', this.state.data);
     const isLoaded = this.state.loaded;
     if (!isLoaded) {
       return (
@@ -43,7 +43,12 @@ class PubDisplay extends Component {
           <table className="table">
             <thead>
               <tr>
-                <th scope="col">Publication</th>
+                <th scope="col">
+                  Publication
+                  <Link to="/pub-entry" className="btn btn-link text-secondary">
+                    <span className="text-secondary">new publication</span>
+                  </Link>
+                </th>
                 <th scope="col">Twitter Handle</th>
               </tr>
             </thead>
