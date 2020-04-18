@@ -40,16 +40,15 @@ class PubDisplay extends Component {
     } else {
       return (
         <div>
+          <Link to="/pub-entry" className="btn btn-link text-secondary">
+            <span className="text-secondary">new publication</span>
+          </Link>
           <table className="table">
             <thead>
               <tr>
-                <th scope="col">
-                  Publication
-                  <Link to="/pub-entry" className="btn btn-link text-secondary">
-                    <span className="text-secondary">new publication</span>
-                  </Link>
-                </th>
+                <th scope="col">Publication</th>
                 <th scope="col">Twitter Handle</th>
+                <th scope="col">{'  '}</th>
               </tr>
             </thead>
             <tbody>
@@ -57,6 +56,17 @@ class PubDisplay extends Component {
                 <tr>
                   <th scope="row">{pubs.name}</th>
                   <th scope="row">{pubs.twitterHandle}</th>
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="addToMyPubs"
+                    id="addToMyPubs"
+                    value="option1"
+                    unchecked
+                  ></input>
+                  <label className="form-check-label" for="addToMyPubs">
+                    Add to My Pubs
+                  </label>
                 </tr>
               ))}
             </tbody>

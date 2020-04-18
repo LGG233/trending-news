@@ -8,6 +8,8 @@ class PubEntry extends Component {
     this.state = {
       name: '',
       twitterHandle: '',
+      entryTitle: '',
+      entryTwitterHandle: '@',
     };
   }
 
@@ -28,20 +30,24 @@ class PubEntry extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('submit button clicked');
-    ApiService.post('pubs', {
-      name: this.state.entryTitle,
-      twitterHandle: this.state.entryTwitterHandle,
-    })
-      .then((response) => {
-        console.log(response);
-        if (response.statusText === 'OK') {
-          window.location.replace('/pub-display'); // 'Redirect' did not work
-        }
+    if (this.state.entryTitle.length === 0 || this.state.entryTwitterHandle.length === 1) {
+      alert('Please enter a valid name and Twitter handle for the publication');
+      window.location.replace('/pub-entry');
+    } else {
+      ApiService.post('pubs', {
+        name: this.state.entryTitle,
+        twitterHandle: this.state.entryTwitterHandle,
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          console.log(response);
+          if (response.statusText === 'OK') {
+            window.location.replace('/pub-display');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   handleCancel = (event) => {
