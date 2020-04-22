@@ -5,6 +5,9 @@ import { ApiService } from './services';
 import { ACCESS_TOKEN_STORAGE_KEY } from './core';
 import PubDisplay from './components/pub-display';
 import PubEntry from './components/pub-entry';
+import PubSearch from './components/pub-search';
+import PubSearchResults from './components/pub-search-results'
+
 
 class App extends Component {
   constructor() {
@@ -78,6 +81,8 @@ class App extends Component {
                 <Auth path="/auth" updateUser={this.updateUser} />
                 <PubEntry path="/pub-entry" />
                 <PubDisplay path="pub-display" />
+                <PubSearch path="/pub-search" />
+                <PubSearchResults path="/pub-search-results" />
               </Router>
             </div>
           </div>

@@ -34,4 +34,22 @@ router.post('/', (req, res, next) => {
     })
 });
 
+router.get('/searchPubTitle/:title', (params, res, next) => {
+    console.log(params.params.name);
+    Pub.findOne({ name: params.params.title })
+        .then(function (dbTitle) {
+            res.json(dbTitle);
+        });
+})
+
+router.get('/searchPubTwitter/:twitter', (params, res, next) => {
+    console.log(params.params.twitter);
+    Pub.findOne({ twitterHandle: params.params.twitter })
+        .then(function (dbTwitter) {
+            res.json(dbTwitter);
+        });
+})
+
+
+
 module.exports = router;

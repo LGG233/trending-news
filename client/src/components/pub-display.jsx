@@ -43,6 +43,9 @@ class PubDisplay extends Component {
           <Link to="/pub-entry" className="btn btn-link text-secondary">
             <span className="text-secondary">new publication</span>
           </Link>
+          <Link to="/pub-search" className="btn btn-link text-secondary">
+            <span className="text-secondary">search publications</span>
+          </Link>
           <table className="table">
             <thead>
               <tr>
@@ -55,18 +58,12 @@ class PubDisplay extends Component {
               {this.state.data.map((pubs) => (
                 <tr>
                   <th scope="row">{pubs.name}</th>
-                  <th scope="row">{pubs.twitterHandle}</th>
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="addToMyPubs"
-                    id="addToMyPubs"
-                    value="option1"
-                    unchecked
-                  ></input>
-                  <label className="form-check-label" for="addToMyPubs">
-                    Add to My Pubs
-                  </label>
+                  <td>{pubs.twitterHandle}</td>
+                  <td>
+                    <button className="btn btn-sm btn secondary add-mypubs" onClick={() => this.addMyPubs()}>
+                      Add to My Pubs
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
