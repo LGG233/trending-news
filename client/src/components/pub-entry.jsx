@@ -39,7 +39,6 @@ class PubEntry extends Component {
         twitterHandle: this.state.entryTwitterHandle,
       })
         .then((response) => {
-          console.log(response);
           if (response.statusText === 'OK') {
             window.location.replace('/pub-display');
           }

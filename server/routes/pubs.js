@@ -14,9 +14,7 @@ router.get('/data', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    // console.log('POST request received')
     Pub.findOne({ twitterHandle: req.body.twitterHandle }, (err, pub) => {
-        // console.log("here is the twitter handle of the publication you'd like to put into the db: ", req.body.twitterHandle)
         if (err) {
             console.log("here is the error: ", err)
         } else if (pub) {
