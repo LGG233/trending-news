@@ -1,0 +1,47 @@
+[
+  {
+    "name": "The Wall Street Journal",
+    "twitterHandle": "@WSJ",
+    "__v": 0
+  },
+  {
+    "name": "The Washington Post",
+    "twitterHandle": "@washingtonpost",
+    "__v": 0
+  },
+  {
+    "name": "The Economist",
+    "twitterHandle": "@TheEconomist",
+    "__v": 0
+  },
+  {
+    "name": "Forbes",
+    "twitterHandle": "@Forbes",
+    "__v": 0
+  },
+  {
+    "name": "Private Equity International",
+    "twitterHandle": "@PEI_news",
+    "__v": 0
+  },
+  {
+    "name": "Environment + Energy Leader",
+    "twitterHandle": "@ELDaily",
+    "__v": 0
+  },
+  {
+    "name": "Inc.",
+    "twitterHandle": "@inc",
+    "__v": 0
+  },
+  {
+    "name": "Legal Intelligencer",
+    "twitterHandle": "@thelegalintel",
+    "__v": 0
+  },
+  {
+    "name": "HR California",
+    "twitterHandle": "@HRCalifornia",
+    "__v": 0
+  }
+]

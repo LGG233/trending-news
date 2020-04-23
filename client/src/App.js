@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
-import { NavBar, SignUp, SignIn, Landing, UserProfile, Auth } from './components';
+import { NavBar, SignUp, SignIn, Landing, UserProfile, Auth, PubEntry, PubDisplay, PubSearch } from './components';
 import { ApiService } from './services';
 import { ACCESS_TOKEN_STORAGE_KEY } from './core';
-import PubDisplay from './components/pub-display';
-import PubEntry from './components/pub-entry';
-import PubSearch from './components/pub-search';
-import PubSearchResults from './components/pub-search-results'
 
 
 class App extends Component {
@@ -67,8 +63,14 @@ class App extends Component {
     return (
       <>
         <NavBar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if loggen in: */}
-        {this.state.loggedIn && <p>Join the party, {this.state.user.username}!</p>}
+        {/* greet user if logged in: */}
+        {this.state.loggedIn &&
+          <div className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-6">
+              <h3 >Welcome, {this.state.user.username}!</h3>
+            </div>
+          </div>}
         <br />
         <div className="container-fluid MainPage">
           <div className="row">
@@ -82,7 +84,6 @@ class App extends Component {
                 <PubEntry path="/pub-entry" />
                 <PubDisplay path="pub-display" />
                 <PubSearch path="/pub-search" />
-                <PubSearchResults path="/pub-search-results" />
               </Router>
             </div>
           </div>

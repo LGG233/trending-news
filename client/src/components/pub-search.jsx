@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ApiService } from '../services';
-import { Redirect, navigate, Link } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 
 class PubSearch extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class PubSearch extends Component {
       twitterHandle: '',
       searchTitle: '',
       searchTwitterHandle: '',
+      data: [],
     };
   }
 
@@ -49,14 +50,12 @@ class PubSearch extends Component {
     } else {
       ApiService.get(query)
         .then((response) => {
-          console.log('response.data: ', response.data);
           if (response.data === null) {
             alert('No publication with that name found. Please enter it into the database.');
             navigate('/pub-entry');
           } else {
             this.setState({
-              name: response.data.name,
-              twitterHandle: response.data.twitterHandle,
+              data: response.data,
             });
           }
         })
@@ -71,14 +70,16 @@ class PubSearch extends Component {
   };
 
   render() {
-    if (this.state.name === '') {
+    if (this.state.data.length === 0) {
       return (
         <div>
+          <Link to="/pub-entry" className="btn btn-link text-secondary">
+            <span className="text-secondary">new publication</span>
+          </Link>
           <h4>Search for Publication (by title or Twitter handle)</h4>
           <div className="container-fluid">
             <div className="container">
               <div className="FormCenter">
-                {/* <form onSubmit={this.handleSubmit} className="FormField"> */}
                 <form className="FormField">
                   <div className="FormField">
                     <label for="searchTitle">Publication Title</label>
@@ -124,7 +125,7 @@ class PubSearch extends Component {
             <span className="text-secondary">new publication</span>
           </Link>
           <Link to="/pub-search" className="btn btn-link text-secondary">
-            <span className="text-secondary">search publications</span>
+            <span className="text-secondary">new search</span>
           </Link>
           <table className="table">
             <thead>
@@ -135,15 +136,17 @@ class PubSearch extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">{this.state.name}</th>
-                <td>{this.state.twitterHandle}</td>
-                <td>
-                  <button className="btn btn-sm btn secondary add-mypubs" onClick={() => this.addMyPubs()}>
-                    Add to My Pubs
-                  </button>
-                </td>
-              </tr>
+              {this.state.data.map((results) => (
+                <tr>
+                  <th scope="row">{results.name}</th>
+                  <td>{results.twitterHandle}</td>
+                  <td>
+                    <button className="btn btn-sm btn secondary add-mypubs" onClick={() => this.addMyPubs()}>
+                      Add to My Pubs
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
