@@ -33,14 +33,16 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/searchPubTitle/:title', (params, res, next) => {
-    Pub.find({ name: params.params.title })
+    var regex = new RegExp(params.params.title, "i");
+    Pub.find({ name: regex })
         .then(function (dbTitle) {
             res.json(dbTitle);
         });
 })
 
 router.get('/searchPubTwitter/:twitter', (params, res, next) => {
-    Pub.find({ twitterHandle: params.params.twitter })
+    var regex = new RegExp(["^", params.params.title, "$"].join(""), "i");
+    Pub.find({ twitterHandle: regex })
         .then(function (dbTwitter) {
             res.json(dbTwitter);
         });
