@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"trendingtopics59b276d9": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

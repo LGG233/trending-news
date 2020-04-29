@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
+import { Auth as AmplifyAuth } from 'aws-amplify';
 
 /**
  * @type {string}
@@ -13,8 +14,15 @@ const API = process.env.REACT_APP_API_URL || 'http://localhost:8080';
  * @param {AxiosRequestConfig} config
  * @returns {Promise<AxiosResponse<T>>}
  */
-function request(method, url, config) {
+async function request(method, url, config) {
   url = url.startsWith('http') ? url : `${API}/${url}`;
+  if (url.includes(API)) {
+    const session = await AmplifyAuth.currentSession().catch(() => null);
+    if (session) {
+      const authConfig = { headers: { authorization: session.getIdToken().getJwtToken() } };
+      config = config ? { ...config, headers: { ...config.headers, ...authConfig.headers } } : authConfig;
+    }
+  }
   return Axios.request({ method, url, ...config });
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
-import { LOGOUT_URL, ACCESS_TOKEN_STORAGE_KEY, LOGIN_URL, SIGNUP_URL } from '../core';
+import { Link, navigate } from '@reach/router';
+import { Auth as AmplifyAuth } from 'aws-amplify';
 
 class NavBar extends Component {
   constructor() {
@@ -8,8 +8,24 @@ class NavBar extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  logout = () => {
-    localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+  logout = async () => {
+    try {
+      await AmplifyAuth.signOut();
+      this.props.updateUser({
+        loggedIn: false,
+        user: {
+          name: '',
+          username: '',
+          email: '',
+          publications: [],
+          topics: [],
+          savedArticles: [],
+        },
+      });
+      navigate('/');
+    } catch (error) {
+      console.log('error signing out', error);
+    }
   };
 
   render() {
@@ -28,21 +44,21 @@ class NavBar extends Component {
                 <Link to="/pub-display" className="btn btn-link text-secondary">
                   <span className="text-secondary">publications</span>
                 </Link>
-                <a href={LOGOUT_URL} className="btn btn-link text-secondary" onClick={this.logout}>
+                <button className="btn btn-link text-secondary" onClick={this.logout}>
                   <span className="text-secondary">logout</span>
-                </a>
+                </button>
               </section>
             ) : (
               <section className="navbar-section">
                 <Link to="/" className="btn btn-link text-secondary">
                   <span className="text-secondary">home</span>
                 </Link>
-                <a href={LOGIN_URL} className="btn btn-link text-secondary">
+                <Link to="/signin" className="btn btn-link text-secondary">
                   <span className="test-secondary">sign in</span>
-                </a>
-                <a href={SIGNUP_URL} className="btn btn-link text-secondary">
+                </Link>
+                <Link to="/signup" className="btn btn-link text-secondary">
                   <span className="text-secondary">sign up</span>
-                </a>
+                </Link>
               </section>
             )}
           </div>
