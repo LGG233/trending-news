@@ -2,20 +2,23 @@ import React, { Component } from 'react';
 // import { Redirect } from '@reach/router';
 import { ApiService } from '../services';
 import { Link } from '@reach/router';
+import PubShowData from './pub-showData';
 
 class PubDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      twitterHandle: '',
-      redirectTo: false,
-      loaded: false,
+      data: {
+        name: '',
+        twitterHandle: '',
+        redirectTo: false,
+        loaded: false,
+      },
     };
   }
 
   async componentDidMount() {
-    await ApiService.get('pubs/data').then(
+    await ApiService.get('pubs').then(
       (res) => {
         this.setState({
           data: res.data,
@@ -27,9 +30,17 @@ class PubDisplay extends Component {
         this.setState({ redirectTo: true });
       }
     );
+    console.log(this.state.data);
   }
 
   render() {
+    // const { name, twitterHandle } = this.props.data;
+    // return (
+    //   <div>
+    //     <PubShowData name={name} twitterHandle={twitterHandle} />
+    //   </div>
+    // );
+
     const isLoaded = this.state.loaded;
     if (!isLoaded) {
       return (

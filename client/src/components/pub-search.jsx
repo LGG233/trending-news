@@ -65,6 +65,16 @@ class PubSearch extends Component {
     }
   };
 
+  handleNewSearch = (event) => {
+    this.setState({
+      name: '',
+      twitterHandle: '',
+      searchTitle: '',
+      searchTwitterHandle: '',
+      data: [],
+    });
+  };
+
   addMyPubs = (event) => {
     event.preventDefault();
   };
@@ -124,9 +134,9 @@ class PubSearch extends Component {
           <Link to="/pub-entry" className="btn btn-link text-secondary">
             <span className="text-secondary">new publication</span>
           </Link>
-          <Link to="/pub-search" className="btn btn-link text-secondary">
+          <button className="btn btn-link text-secondary" onClick={() => this.handleNewSearch()}>
             <span className="text-secondary">new search</span>
-          </Link>
+          </button>
           <table className="table">
             <thead>
               <tr>

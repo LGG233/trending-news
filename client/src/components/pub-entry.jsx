@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Redirect } from '@reach/router';
+import { Redirect, navigate } from '@reach/router';
 import { ApiService } from '../services';
 
 class PubEntry extends Component {
@@ -30,9 +30,9 @@ class PubEntry extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.entryTitle.length === 0 || this.state.entryTwitterHandle.length === 1) {
+    if (this.state.entryTitle.length === 0 || this.state.entryTwitterHandle.length <= 1) {
       alert('Please enter a valid name and Twitter handle for the publication');
-      window.location.replace('/pub-entry');
+      navigate('/pub-entry');
     } else {
       ApiService.post('pubs', {
         name: this.state.entryTitle,
@@ -40,7 +40,7 @@ class PubEntry extends Component {
       })
         .then((response) => {
           if (response.statusText === 'OK') {
-            window.location.replace('/pub-display');
+            navigate('/pub-display');
           }
         })
         .catch((error) => {
@@ -50,7 +50,8 @@ class PubEntry extends Component {
   };
 
   handleCancel = (event) => {
-    window.location.replace('/pub-display');
+    event.preventDefault();
+    navigate('/pub-display');
   };
 
   render() {
