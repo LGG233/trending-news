@@ -39,9 +39,7 @@ class PubEntry extends Component {
         twitterHandle: this.state.entryTwitterHandle,
       })
         .then((response) => {
-          if (response.statusText === 'OK') {
-            navigate('/pub-display');
-          }
+          navigate('/pub-display');
         })
         .catch((error) => {
           console.log(error);

@@ -4,7 +4,6 @@ import { NavBar, SignUp, SignIn, Landing, UserProfile, Auth, PubEntry, PubDispla
 import { ApiService } from './services';
 import { ACCESS_TOKEN_STORAGE_KEY } from './core';
 
-
 class App extends Component {
   constructor() {
     super();
@@ -64,13 +63,14 @@ class App extends Component {
       <>
         <NavBar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
-        {this.state.loggedIn &&
+        {this.state.loggedIn && (
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-6">
-              <h3 >Welcome, {this.state.user.username}!</h3>
+              <h3>Welcome, {this.state.user.username}!</h3>
             </div>
-          </div>}
+          </div>
+        )}
         <br />
         <div className="container-fluid MainPage">
           <div className="row">

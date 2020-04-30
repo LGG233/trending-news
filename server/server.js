@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 // routes
 app.use('/user', user);
-app.use('/pubs', pubs)
+app.use('/pubs', pubs);
 
 // starting server
 app.listen(PORT, () => {

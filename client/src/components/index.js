@@ -13,5 +13,19 @@ import PubEntry from './pub-entry';
 import PubSearch from './pub-search';
 import PubShowData from './pub-showData';
 
-
-export { Landing, NavBar, SignIn, SignUp, UserProfile, MyArticles, MyInfo, MyPublications, MyTopics, Auth, PubSearch, PubEntry, PubDisplay, PubShowData };
+export {
+  Landing,
+  NavBar,
+  SignIn,
+  SignUp,
+  UserProfile,
+  MyArticles,
+  MyInfo,
+  MyPublications,
+  MyTopics,
+  Auth,
+  PubSearch,
+  PubEntry,
+  PubDisplay,
+  PubShowData,
+};
