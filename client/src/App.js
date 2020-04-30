@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import { Auth as AmplifyAuth } from 'aws-amplify';
-import { NavBar, SignUp, SignIn, Landing, UserProfile, Auth, PubEntry, PubDisplay, PubSearch } from './components';
+import {
+  NavBar,
+  SignUp,
+  SignIn,
+  Landing,
+  UserProfile,
+  Auth,
+  PubEntry,
+  PubDisplay,
+  PubSearch,
+  Confirm,
+} from './components';
 import { ApiService } from './services';
 import { ACCESS_TOKEN_STORAGE_KEY } from './core';
 
@@ -107,6 +118,7 @@ class App extends Component {
                 <Landing path="/" />
                 <SignUp path="/signup" signup={this.signup} />
                 <SignIn path="/signin" updateUser={this.updateUser} getUser={this.getUserV2} />
+                <Confirm path="/confirm" />
                 <UserProfile path="/userProfile" user={this.state.user} />
                 <Auth path="/auth" updateUser={this.updateUser} />
                 <PubEntry path="/pub-entry" />

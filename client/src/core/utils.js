@@ -27,7 +27,9 @@ export const mapJsonToUrlEncoded = (data) => {
  */
 export const mapQueryParams = (urlQueryString) =>
   urlQueryString
-    .substring(1)
-    .split('&')
-    .map((pair) => pair.split('='))
-    .reduce((p, c) => ({ ...p, [c[0]]: c[1] }), {});
+    ? urlQueryString
+        .substring(1)
+        .split('&')
+        .map((pair) => pair.split('='))
+        .reduce((p, c) => ({ ...p, [c[0]]: c[1] }), {})
+    : {};

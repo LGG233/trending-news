@@ -36,7 +36,10 @@ class SignIn extends Component {
       this.props.getUser(user);
       navigate('/');
     } catch (error) {
-      // TODO: handle "UserNotConfirmed" errors gracefully
+      console.log(error.code);
+      if (error.code === 'UserNotConfirmedException') {
+        navigate(`/confirm?username=${this.state.username}`);
+      }
       console.log('error signing in', error);
     }
   };
