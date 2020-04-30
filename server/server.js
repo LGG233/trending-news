@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 8080;
 require('./database');
 // route requires
 const user = require('./routes/user');
+const pubs = require('./routes/pubs');
 const cors = require('cors');
 
 // Middleware
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 // routes
 app.use('/user', user);
+app.use('/pubs', pubs);
 
 // starting server
 app.listen(PORT, () => {

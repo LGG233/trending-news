@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from '@reach/router';
-import { MyInfo, MyPublications, MyTopics, MyArticles } from './index';
+import { MyInfo, MyPublications, MyTopics } from './index';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -11,20 +11,18 @@ class UserProfile extends Component {
   }
 
   render() {
-    const { name, username, email, publications, topics, savedArticles } = this.props.user;
+    const { name, username, email, publications, topics } = this.props.user;
     if (this.state.redirectTo) {
       return <Redirect to="/" noThrow />;
     } else {
       return (
         <div>
-          <h1>User Profile for {username}</h1>
+          <h2>{username}'s Profile</h2>
           <MyInfo name={name} username={username} email={email} />
           <br></br>
           <MyPublications publications={publications} />
           <br></br>
           <MyTopics topics={topics} />
-          <br></br>
-          <MyArticles savedArticles={savedArticles} />
         </div>
       );
     }
