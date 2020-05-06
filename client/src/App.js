@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import { Auth as AmplifyAuth } from 'aws-amplify';
-import {
-  NavBar,
-  SignUp,
-  SignIn,
-  Landing,
-  UserProfile,
-  Auth,
-  PubEntry,
-  PubDisplay,
-  PubSearch,
-  Confirm,
-} from './components';
+import { NavBar, SignUp, SignIn, Landing, UserProfile, PubEntry, PubDisplay, PubSearch, Confirm } from './components';
 import { ApiService } from './services';
-import { ACCESS_TOKEN_STORAGE_KEY } from './core';
 
 class App extends Component {
   constructor() {
@@ -31,54 +19,26 @@ class App extends Component {
       },
     };
     this.getUser = this.getUser.bind(this);
-    this.getUserV2 = this.getUserV2.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUser = this.updateUser.bind(this);
   }
 
   async componentDidMount() {
-    this.getUserV2();
+    this.getUser();
   }
 
   updateUser(userObject) {
     this.setState(userObject);
   }
 
-  async getUser() {
-    // retrieve access token from local storage
-    const token = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
-    if (!token) return;
-
-    // get user data
-    const headers = { Authorization: `Bearer ${token}` };
-    const userResponse = await ApiService.get('user', { headers }).catch(() => null);
-
-    // remain "logged out" on user data fetch error
-    if (!userResponse) return;
-
-    // user is logged in!
-    const { name, username, email, publications, topics, savedArticles } = userResponse.data;
-    this.setState({
-      loggedIn: true,
-      user: {
-        name,
-        username,
-        email,
-        publications,
-        topics,
-        savedArticles,
-      },
-    });
-  }
-
-  async getUserV2(userFromSignIn) {
+  async getUser(userFromSignIn) {
     // verify authenticated user
     const user = userFromSignIn || (await AmplifyAuth.currentAuthenticatedUser().catch(() => null));
     // remain "logged out" if no authenticated user data found in browser
     if (!user) return;
 
     // get user data
-    const userResponse = await ApiService.get('user/v2').catch(() => null);
+    const userResponse = await ApiService.get('user').catch(() => null);
     // remain "logged out" on user data fetch error
     if (!userResponse) return;
 
@@ -117,10 +77,9 @@ class App extends Component {
               <Router>
                 <Landing path="/" />
                 <SignUp path="/signup" signup={this.signup} />
-                <SignIn path="/signin" updateUser={this.updateUser} getUser={this.getUserV2} />
+                <SignIn path="/signin" updateUser={this.updateUser} getUser={this.getUser} />
                 <Confirm path="/confirm" />
                 <UserProfile path="/userProfile" user={this.state.user} />
-                <Auth path="/auth" updateUser={this.updateUser} />
                 <PubEntry path="/pub-entry" />
                 <PubDisplay path="pub-display" />
                 <PubSearch path="/pub-search" />
