@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
-import { ApiService } from '../services';
+import { Auth as AmplifyAuth } from 'aws-amplify';
 import { SIGNUP_URL } from '../core';
 
 class SignUp extends Component {
@@ -31,25 +31,14 @@ class SignUp extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    ApiService.post('user/', {
-      name: this.state.name,
-      username: this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-    })
-      .then((response) => {
-        if (response.data) {
-          navigate('/signin');
-        } else {
-          console.log('Sign-up error');
-        }
-      })
-      .catch((error) => {
-        console.log('Sign up server error');
-        console.log(error);
-      });
+  handleSubmit = async () => {
+    try {
+      const { username, password, email } = this.state;
+      await AmplifyAuth.signUp({ username, password, attributes: { email } });
+      navigate(`/confirm?username=${username}`);
+    } catch (error) {
+      console.log('error signing up', error);
+    }
   };
 
   handleCancel = (event) => {
@@ -121,7 +110,7 @@ class SignUp extends Component {
             <button className="btn btn-sm btn-secondary entryCancel" onClick={this.handleCancel}>
               Cancel{' '}
             </button>
-            <button className="btn btn-sm btn-warning" onClick={() => navigate(SIGNUP_URL)}>
+            <button disabled className="btn btn-sm btn-warning" onClick={() => navigate(SIGNUP_URL)}>
               AWS Cognito
             </button>
           </div>

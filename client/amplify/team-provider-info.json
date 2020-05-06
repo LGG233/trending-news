@@ -1,0 +1,20 @@
+{
+    "production": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-trendingtopics-production-73504-authRole",
+            "UnauthRoleArn": "arn:aws:iam::047505034087:role/amplify-trendingtopics-production-73504-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::047505034087:role/amplify-trendingtopics-production-73504-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-trendingtopics-production-73504-deployment",
+            "UnauthRoleName": "amplify-trendingtopics-production-73504-unauthRole",
+            "StackName": "amplify-trendingtopics-production-73504",
+            "StackId": "arn:aws:cloudformation:us-east-2:047505034087:stack/amplify-trendingtopics-production-73504/4f950890-8944-11ea-8cfa-025282f53354",
+            "AmplifyAppId": "d3sq2j549vqdph"
+        },
+        "categories": {
+            "auth": {
+                "trendingtopics59b276d9": {}
+            }
+        }
+    }
+}

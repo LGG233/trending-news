@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, navigate } from '@reach/router';
-import { ApiService } from '../services';
+import { Auth as AmplifyAuth } from 'aws-amplify';
 import { LOGIN_URL } from '../core';
 
 class SignIn extends Component {
@@ -30,30 +30,18 @@ class SignIn extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('sign-in form fired');
-
-    ApiService.post('user/signin', {
-      username: this.state.username,
-      password: this.state.password,
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          // update App.js state
-          this.props.updateUser({
-            loggedIn: true,
-            username: response.data.username,
-          });
-          localStorage.setItem('username', this.state.username);
-          // update status to redirect to logged-in-home
-          navigate('/');
-        }
-      })
-      .catch((error) => {
-        console.log('login error: ');
-        console.log(error);
-      });
+  handleSubmit = async () => {
+    try {
+      const user = await AmplifyAuth.signIn(this.state.username, this.state.password);
+      this.props.getUser(user);
+      navigate('/');
+    } catch (error) {
+      console.log(error.code);
+      if (error.code === 'UserNotConfirmedException') {
+        navigate(`/confirm?username=${this.state.username}`);
+      }
+      console.log('error signing in', error);
+    }
   };
 
   handleCancel = (event) => {
@@ -73,7 +61,7 @@ class SignIn extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="FormField">
-                <label for="username">Username</label>
+                <label htmlFor="username">Username</label>
                 <input
                   type="text"
                   className="form-control"
@@ -85,7 +73,7 @@ class SignIn extends Component {
                 />
               </div>
               <div className="form-group">
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                   type="password"
                   className="form-control"
@@ -104,7 +92,7 @@ class SignIn extends Component {
               <button className="btn btn-sm btn-secondary entryCancel" onClick={this.handleCancel}>
                 Cancel{' '}
               </button>
-              <button className="btn btn-sm btn-warning" onClick={() => navigate(LOGIN_URL)}>
+              <button disabled className="btn btn-sm btn-warning" onClick={() => navigate(LOGIN_URL)}>
                 AWS Cognito
               </button>
             </div>

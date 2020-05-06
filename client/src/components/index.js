@@ -12,6 +12,7 @@ import PubDisplay from './pub-display';
 import PubEntry from './pub-entry';
 import PubSearch from './pub-search';
 import PubShowData from './pub-showData';
+import Confirm from './confirm';
 
 export {
   Landing,
@@ -28,4 +29,5 @@ export {
   PubEntry,
   PubDisplay,
   PubShowData,
+  Confirm,
 };
