@@ -7,7 +7,6 @@ import MyInfo from './userinfo';
 import MyPublications from './publications';
 import MyTopics from './topics';
 import MyArticles from './articles';
-import Auth from './auth';
 import PubDisplay from './pub-display';
 import PubEntry from './pub-entry';
 import PubSearch from './pub-search';
@@ -24,7 +23,6 @@ export {
   MyInfo,
   MyPublications,
   MyTopics,
-  Auth,
   PubSearch,
   PubEntry,
   PubDisplay,
