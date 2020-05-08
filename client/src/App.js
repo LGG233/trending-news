@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import { Auth as AmplifyAuth } from 'aws-amplify';
-import { NavBar, SignUp, SignIn, Landing, UserProfile, PubEntry, PubDisplay, PubSearch, Confirm } from './components';
+import {
+  NavBar,
+  SignUp,
+  SignIn,
+  Landing,
+  UserProfile,
+  PubEntry,
+  PubDisplay,
+  PubSearch,
+  Confirm,
+  ForgotPassword,
+  ResetPassword,
+} from './components';
 import { ApiService } from './services';
 
 class App extends Component {
@@ -79,6 +91,8 @@ class App extends Component {
                 <SignUp path="/signup" signup={this.signup} />
                 <SignIn path="/signin" updateUser={this.updateUser} getUser={this.getUser} />
                 <Confirm path="/confirm" />
+                <ForgotPassword path="/forgot-password" />
+                <ResetPassword path="/reset-password" />
                 <UserProfile path="/userProfile" user={this.state.user} />
                 <PubEntry path="/pub-entry" />
                 <PubDisplay path="pub-display" />
