@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, navigate } from '@reach/router';
+import { Redirect, navigate, Link } from '@reach/router';
 import { Auth as AmplifyAuth } from 'aws-amplify';
 
 class SignIn extends Component {
@@ -91,6 +91,9 @@ class SignIn extends Component {
               <button className="btn btn-sm btn-secondary entryCancel" onClick={this.handleCancel}>
                 Cancel{' '}
               </button>
+            </div>
+            <div className="row">
+              <Link to="/forgot-password">Forgot Password?</Link>
             </div>
           </div>
         </div>

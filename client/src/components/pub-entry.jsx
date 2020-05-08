@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, navigate } from '@reach/router';
+import { navigate } from '@reach/router';
 import { ApiService } from '../services';
 
 class PubEntry extends Component {

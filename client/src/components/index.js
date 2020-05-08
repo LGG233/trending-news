@@ -12,6 +12,8 @@ import PubEntry from './pub-entry';
 import PubSearch from './pub-search';
 import PubShowData from './pub-showData';
 import Confirm from './confirm';
+import ForgotPassword from './forgot-password';
+import ResetPassword from './reset-password';
 
 export {
   Landing,
@@ -28,4 +30,6 @@ export {
   PubDisplay,
   PubShowData,
   Confirm,
+  ForgotPassword,
+  ResetPassword,
 };
