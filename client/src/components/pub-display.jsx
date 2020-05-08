@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import { Redirect } from '@reach/router';
 import { ApiService } from '../services';
 import { Link } from '@reach/router';
-import PubShowData from './pub-showData';
 
 class PubDisplay extends Component {
   constructor(props) {
