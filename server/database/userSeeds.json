@@ -1,67 +1,67 @@
 {
-    "_id": "",
-    "username": "",
-    "password": "",
-    "name": "",
-    "email": "",
-    "publications": [
-        {
-            "id": 1,
-            "name": "The New York Times",
-            "twitterHandle": "@nytimes"
-        },
-        {
-            "id": 2,
-            "name": "The Wall Street Journal",
-            "twitterHandle": "@WSJ"
-        },
-        {
-            "id": 3,
-            "name": "Business Insider",
-            "twitterHandle": "@businessinsider"
-        },
-        {
-            "id": 4,
-            "name": "The Economist",
-            "twitterHandle": "@TheEconomist"
-        }
-    ],
-    "savedArticles": [
-        {
-            "id": 1,
-            "title": "Bookstore Warehouse Employees Demand Protections After Nine Confirmed Cases of COVID-19",
-            "link": "https://www.insidernj.com/barnes-noble-warehouse-employees-demand-immediate-protections-nine-confirmed-cases-covid-19/",
-            "tags": "COVID-19, employees, workplace safety"
-        },
-        {
-            "id": 2,
-            "title": "COVID-19 and CFIUS: Coronavirus Pandemic Slows National Security Reviews",
-            "link": "https://www.law.com/corpcounsel/2020/04/07/covid-19-and-cfius-coronavirus-pandemic-slows-national-security-reviews/",
-            "tags": "COVID-19, CFIUS, national security"
-        },
-        {
-            "id": 3,
-            "title": "COVID-19 Update: Patent Rights in the COVID-19 Pandemic: How will Industries and Governments Respond?",
-            "link": "https://www.natlawreview.com/article/covid-19-update-patent-rights-covid-19-pandemic-how-will-industries-and-governments",
-            "tags": "COVID-19, patent, IP rights, HHS"
-        }
-    ],
-    "topics": [
-        {
-            "id": 1,
-            "name": "employment",
-            "searchTerm": "COVID-19, employees, workplace safety"
-        },
-        {
-            "id": 2,
-            "name": "m&a",
-            "searchTerm": "COVID-19, CFIUS, national security"
-        },
-        {
-            "id": 3,
-            "name": "intellectual property",
-            "searchTerm": "COVID-19, patent, IP rights, HHS"
-        }
-    ],
-    "__v": 0
+  "_id": "",
+  "username": "",
+  "password": "",
+  "name": "",
+  "email": "",
+  "publications": [
+    {
+      "id": 1,
+      "name": "The New York Times",
+      "twitterHandle": "@nytimes"
+    },
+    {
+      "id": 2,
+      "name": "The Wall Street Journal",
+      "twitterHandle": "@WSJ"
+    },
+    {
+      "id": 3,
+      "name": "Business Insider",
+      "twitterHandle": "@businessinsider"
+    },
+    {
+      "id": 4,
+      "name": "The Economist",
+      "twitterHandle": "@TheEconomist"
+    }
+  ],
+  "savedArticles": [
+    {
+      "id": 1,
+      "title": "Bookstore Warehouse Employees Demand Protections After Nine Confirmed Cases of COVID-19",
+      "link": "https://www.insidernj.com/barnes-noble-warehouse-employees-demand-immediate-protections-nine-confirmed-cases-covid-19/",
+      "tags": "COVID-19, employees, workplace safety"
+    },
+    {
+      "id": 2,
+      "title": "COVID-19 and CFIUS: Coronavirus Pandemic Slows National Security Reviews",
+      "link": "https://www.law.com/corpcounsel/2020/04/07/covid-19-and-cfius-coronavirus-pandemic-slows-national-security-reviews/",
+      "tags": "COVID-19, CFIUS, national security"
+    },
+    {
+      "id": 3,
+      "title": "COVID-19 Update: Patent Rights in the COVID-19 Pandemic: How will Industries and Governments Respond?",
+      "link": "https://www.natlawreview.com/article/covid-19-update-patent-rights-covid-19-pandemic-how-will-industries-and-governments",
+      "tags": "COVID-19, patent, IP rights, HHS"
+    }
+  ],
+  "topics": [
+    {
+      "id": 1,
+      "name": "employment",
+      "searchTerm": "COVID-19, employees, workplace safety"
+    },
+    {
+      "id": 2,
+      "name": "m&a",
+      "searchTerm": "COVID-19, CFIUS, national security"
+    },
+    {
+      "id": 3,
+      "name": "intellectual property",
+      "searchTerm": "COVID-19, patent, IP rights, HHS"
+    }
+  ],
+  "__v": 0
 }
