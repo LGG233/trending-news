@@ -15,7 +15,8 @@
   "scripts": {
     "install": "chmod +x ./scripts/install && ./scripts/install",
     "start": "chmod +x ./scripts/start && ./scripts/start",
-    "format": "npx prettier@2.0.2 --write \"{,.*/,**/}!(package-lock).+(js|jsx|json|html|md)\""
+    "format:write": "npx prettier@2.0.2 --write \"{,.*/,**/}!(package-lock).+(js|jsx|json|html|md)\"",
+    "format:check": "npx prettier@2.0.2 --check \"{,.*/,**/}!(package-lock).+(js|jsx|json|html|md)\""
   },
   "prettier": {
     "printWidth": 120,
