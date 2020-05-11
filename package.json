@@ -21,5 +21,8 @@
   "prettier": {
     "printWidth": 120,
     "singleQuote": true
+  },
+  "dependencies": {
+    "react-bootstrap": "^1.0.1"
   }
 }

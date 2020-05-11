@@ -6,6 +6,7 @@ class PubSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      _id: '',
       name: '',
       twitterHandle: '',
       searchTitle: '',
@@ -147,7 +148,7 @@ class PubSearch extends Component {
             </thead>
             <tbody>
               {this.state.data.map((results) => (
-                <tr>
+                <tr key={results._id}>
                   <th scope="row">{results.name}</th>
                   <td>{results.twitterHandle}</td>
                   <td>

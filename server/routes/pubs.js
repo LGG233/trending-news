@@ -39,7 +39,6 @@ router.get('/searchPubTitle/:title', (params, res, next) => {
 
 router.get('/searchPubTwitter/:twitter', (params, res, next) => {
   var regex = new RegExp(params.params.twitter, 'i');
-  // var regex = new RegExp(["^", params.params.twitter, "$"].join(""), "i");
   Pub.find({ twitterHandle: regex }).then(function (dbTwitter) {
     res.json(dbTwitter);
   });

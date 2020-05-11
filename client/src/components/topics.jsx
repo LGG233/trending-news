@@ -1,38 +1,44 @@
 import React, { Component } from 'react';
+import { navigate } from '@reach/router';
+import { ApiService } from '../services';
 
 class MyTopics extends Component {
+  deleteTopic(value) {
+    let searchTerm = value.topics;
+    ApiService.post('topics/' + searchTerm)
+      .then((response) => {
+        navigate('/userProfile');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div>
-        <h3>My Topics</h3>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Search Terms</th>
-              <th>
-                <button
-                  className="btn btn-sm btn-secondary card-btn"
-                  onClick={() => this.editTopics(this.state.userId)}
-                >
-                  Edit Topics
-                </button>
-              </th>
-            </tr>
-          </thead>
+        <h3>
+          My Topics
+          <button
+            className="btn btn-link text-secondary"
+            onClick={function () {
+              navigate('./topics-entry');
+            }}
+          >
+            Add New
+          </button>
+        </h3>
+
+        <table className="table-sm">
           <tbody>
-            {this.props.topics.map((topics) => (
-              <tr>
-                <th scope="row">{topics.name}</th>
-                <td>{topics.searchTerm}</td>
-                <td>
-                  <button
-                    className="btn btn-sm btn-secondary card-btn"
-                    onClick={() => this.deleteTopic(this.state.userId)}
-                  >
+            {this.props.topics.map((topics, index) => (
+              <tr key={index}>
+                <th scope="row">
+                  {topics}
+                  <button className="btn btn-link text-secondary" onClick={() => this.deleteTopic({ topics })}>
                     Delete
                   </button>
-                </td>
+                </th>
               </tr>
             ))}
           </tbody>
