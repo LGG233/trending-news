@@ -12,6 +12,7 @@ import PubEntry from './pub-entry';
 import PubSearch from './pub-search';
 import PubShowData from './pub-showData';
 import Confirm from './confirm';
+import ForgotUsername from './forgot-username';
 import ForgotPassword from './forgot-password';
 import ResetPassword from './reset-password';
 
@@ -30,6 +31,7 @@ export {
   PubDisplay,
   PubShowData,
   Confirm,
+  ForgotUsername,
   ForgotPassword,
   ResetPassword,
 };
