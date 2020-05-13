@@ -5,9 +5,9 @@ const User = require('../database/models/user');
 router.post('/', (req, res, next) => {
     User.findOne({ topics: req.body.entryTerm }, (err, topic) => {
         if (err) {
-            console.log('here is the error: ', err);
+            res.sendStatus(500);
         } else if (topic) {
-            console.log('That search term is already in your topics database');
+            res.sendStatus(409)
         } else {
             User.updateOne(
                 {
@@ -19,7 +19,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.post('/:name', (params, res, next) => {
+router.delete('/:name', (params, res, next) => {
     User.updateOne({ $pull: { topics: params.params.name } })
         .then(function (dbTopics) {
             res.json(dbTopics);

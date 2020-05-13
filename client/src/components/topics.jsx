@@ -5,7 +5,7 @@ import { ApiService } from '../services';
 class MyTopics extends Component {
   deleteTopic(value) {
     let searchTerm = value.topics;
-    ApiService.post('topics/' + searchTerm)
+    ApiService.delete('topics/' + searchTerm)
       .then((response) => {
         navigate('/userProfile');
       })
@@ -22,7 +22,7 @@ class MyTopics extends Component {
           <button
             className="btn btn-link text-secondary"
             onClick={function () {
-              navigate('./topics-entry');
+              navigate('/topics-entry');
             }}
           >
             Add New
