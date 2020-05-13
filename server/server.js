@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 require('./database');
 // route requires
+const username = require('./routes/username');
 const { TokenService } = require('./services');
 const user = require('./routes/user');
 const pubs = require('./routes/pubs');
@@ -17,7 +18,10 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// authenticate all routes
+// public routes
+app.use('/username', username);
+
+// authenticate all protected routes
 app.use(async (req, res, next) =>
   TokenService.verify(req.headers.authorization).then(
     (decodedToken) => {
@@ -31,7 +35,7 @@ app.use(async (req, res, next) =>
   )
 );
 
-// routes
+// protected routes
 app.use('/user', user);
 app.use('/pubs', pubs);
 

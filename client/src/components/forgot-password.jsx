@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Auth as AmplifyAuth } from 'aws-amplify';
-import { navigate } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 import { AUTHENTICATION_ERROR_MESSAGES } from '../core';
 
 class ForgotPassword extends Component {
@@ -45,6 +45,7 @@ class ForgotPassword extends Component {
           onChange={this.handleChange.bind(this)}
         />
         <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+        <Link to="/forgot-username">Forgot Username?</Link>
         {this.state.alert && <div style={{ color: this.state.alert.color }}>{this.state.alert.message}</div>}
       </>
     );

@@ -11,6 +11,7 @@ import {
   PubDisplay,
   PubSearch,
   Confirm,
+  ForgotUsername,
   ForgotPassword,
   ResetPassword,
 } from './components';
@@ -91,6 +92,7 @@ class App extends Component {
                 <SignUp path="/signup" signup={this.signup} />
                 <SignIn path="/signin" updateUser={this.updateUser} getUser={this.getUser} />
                 <Confirm path="/confirm" />
+                <ForgotUsername path="/forgot-username" />
                 <ForgotPassword path="/forgot-password" />
                 <ResetPassword path="/reset-password" />
                 <UserProfile path="/userProfile" user={this.state.user} />
