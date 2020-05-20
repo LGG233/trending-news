@@ -4,10 +4,12 @@ import { ApiService } from '../services';
 
 class MyTopics extends Component {
   deleteTopic(value) {
-    let searchTerm = value.topics;
+    let searchTerm = value.topic;
     ApiService.delete('topics/' + searchTerm)
       .then((response) => {
-        navigate('/userProfile');
+        if (response.statusText === 'OK') {
+          window.location.replace('/userProfile');
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -31,11 +33,11 @@ class MyTopics extends Component {
 
         <table className="table-sm">
           <tbody>
-            {this.props.topics.map((topics, index) => (
+            {this.props.topics.map((topic, index) => (
               <tr key={index}>
                 <th scope="row">
-                  {topics}
-                  <button className="btn btn-link text-secondary" onClick={() => this.deleteTopic({ topics })}>
+                  {topic}
+                  <button className="btn btn-link text-secondary" onClick={() => this.deleteTopic({ topic })}>
                     Delete
                   </button>
                 </th>

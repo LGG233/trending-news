@@ -57,10 +57,10 @@ class PubDisplay extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.data.map((pubs) => (
-                <tr key={pubs._id}>
-                  <th scope="row">{pubs.name}</th>
-                  <td>{pubs.twitterHandle}</td>
+              {this.state.data.map((pub) => (
+                <tr key={pub._id}>
+                  <th scope="row">{pub.name}</th>
+                  <td>{pub.twitterHandle}</td>
                   <td>
                     <button className="btn btn-sm btn secondary add-mypubs" onClick={() => this.addMyPubs()}>
                       Add to My Pubs

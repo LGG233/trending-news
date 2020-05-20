@@ -32,7 +32,10 @@ class TopicEntry extends Component {
       entryTerm: this.state.entryTerm,
     })
       .then((response) => {
-        navigate('/userProfile');
+        if (response.statusText === 'OK') {
+          window.location.replace('/userProfile');
+        }
+        // navigate('/userProfile');
       })
       .catch((error) => {
         console.log(error);
@@ -41,7 +44,7 @@ class TopicEntry extends Component {
 
   handleCancel = (event) => {
     event.preventDefault();
-    navigate('/user-profile');
+    navigate('/userProfile');
   };
 
   render() {
