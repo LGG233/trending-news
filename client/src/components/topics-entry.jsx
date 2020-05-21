@@ -33,9 +33,9 @@ class TopicEntry extends Component {
     })
       .then((response) => {
         if (response.statusText === 'OK') {
-          window.location.replace('/userProfile');
+          this.props.getUser();
+          navigate('/userProfile');
         }
-        // navigate('/userProfile');
       })
       .catch((error) => {
         console.log(error);

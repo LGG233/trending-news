@@ -8,7 +8,8 @@ class MyTopics extends Component {
     ApiService.delete('topics/' + searchTerm)
       .then((response) => {
         if (response.statusText === 'OK') {
-          window.location.replace('/userProfile');
+          this.props.getUser();
+          navigate('/userProfile');
         }
       })
       .catch((error) => {

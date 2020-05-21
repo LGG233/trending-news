@@ -95,12 +95,12 @@ class App extends Component {
                 <ForgotUsername path="/forgot-username" />
                 <ForgotPassword path="/forgot-password" />
                 <ResetPassword path="/reset-password" />
-                <UserProfile path="/userProfile" user={this.state.user} />
+                <UserProfile path="/userProfile" getUser={this.getUser} user={this.state.user} />
                 <PubEntry path="/pub-entry" />
                 <PubDisplay path="pub-display" />
                 <PubSearch path="/pub-search" />
                 <TopicSearch path="/topics-search" />
-                <TopicEntry path="/topics-entry" />
+                <TopicEntry path="/topics-entry" getUser={this.getUser} />
               </Router>
             </div>
           </div>
