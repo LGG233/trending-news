@@ -32,8 +32,8 @@ class SignUp extends Component {
 
   handleSubmit = async () => {
     try {
-      const { username, password, email } = this.state;
-      await AmplifyAuth.signUp({ username, password, attributes: { email } });
+      const { name, username, password, email } = this.state;
+      await AmplifyAuth.signUp({ name, username, password, attributes: { email } });
       navigate(`/confirm?username=${username}`);
     } catch (error) {
       console.log('error signing up', error);

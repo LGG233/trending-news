@@ -15,6 +15,7 @@ router.post('/', (req, res, next) => {
       res.sendStatus(409);
     } else {
       console.log('200', user);
+      console.log('Name: ', user.name);
       User.updateOne(
         { username },
         {

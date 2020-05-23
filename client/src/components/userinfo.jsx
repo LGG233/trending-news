@@ -20,10 +20,7 @@ class MyInfo extends Component {
               <td>{this.props.username}</td>
               <td>{this.props.email}</td>
               <td>
-                <button
-                  className="btn btn-sm btn-secondary card-btn"
-                  onClick={() => this.editUserInfo(this.state.userId)}
-                >
+                <button className="btn btn-link text-secondary" onClick={() => this.editUserInfo(this.state.userId)}>
                   Edit User Info
                 </button>
               </td>

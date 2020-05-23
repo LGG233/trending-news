@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { navigate } from '@reach/router';
 
 class MyPublications extends Component {
+  editPublications() {
+    navigate('/pub-display');
+  }
+
   render() {
     return (
       <div>
@@ -11,25 +16,19 @@ class MyPublications extends Component {
               <th scope="col">Title</th>
               <th scope="col">Twitter Handle</th>
               <th>
-                <button
-                  className="btn btn-sm btn-secondary card-btn"
-                  onClick={() => this.editPublications(this.state.userId)}
-                >
-                  Edit Publications
+                <button className="btn btn-link text-secondary" onClick={() => this.editPublications()}>
+                  Edit My Pubs
                 </button>
               </th>
             </tr>
           </thead>
           <tbody>
-            {this.props.publications.map((pubs) => (
-              <tr>
+            {this.props.publications.map((pubs, index) => (
+              <tr key={index}>
                 <th scope="row">{pubs.name}</th>
                 <td>{pubs.twitterHandle}</td>
                 <td>
-                  <button
-                    className="btn btn-sm btn-secondary card-btn"
-                    onClick={() => this.deletePubs(this.state.userId)}
-                  >
+                  <button className="btn btn-link text-secondary" onClick={() => this.deletePubs(this.state.userId)}>
                     Delete
                   </button>
                 </td>
