@@ -22,7 +22,7 @@ class UserProfile extends Component {
           <br></br>
           <MyPublications publications={publications} />
           <br></br>
-          <MyTopics topics={topics} />
+          <MyTopics topics={topics} getUser={this.props.getUser} />
         </div>
       );
     }

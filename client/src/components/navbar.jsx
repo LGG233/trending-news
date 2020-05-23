@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, navigate } from '@reach/router';
 import { Auth as AmplifyAuth } from 'aws-amplify';
+import logo from '../images/research.svg';
 
 class NavBar extends Component {
   constructor() {
@@ -34,18 +35,25 @@ class NavBar extends Component {
     return (
       <div>
         <header className="navbar App-header" id="nav-container">
-          <div className="col-4">
-            <h1>Trending Topics</h1>
+          <div className="col-6">
+            <a className="navbar-brand" href="/">
+              <h1>
+                <img src={logo} style={{ width: 50, height: 50 }} alt="logo" /> Trending Topics{' '}
+              </h1>
+            </a>
             {loggedIn ? (
               <section className="navbar-section">
                 <Link to="/userProfile" className="btn btn-link text-secondary">
-                  <span className="text-secondary">profile</span>
+                  <span className="text-secondary">My Profile</span>
                 </Link>
                 <Link to="/pub-display" className="btn btn-link text-secondary">
-                  <span className="text-secondary">publications</span>
+                  <span className="text-secondary">Publications Database</span>
+                </Link>
+                <Link to="/" className="btn btn-link text-secondary">
+                  <span className="text-secondary">My Searches</span>
                 </Link>
                 <button className="btn btn-link text-secondary" onClick={this.logout}>
-                  <span className="text-secondary">logout</span>
+                  <span className="text-secondary">Logout</span>
                 </button>
               </section>
             ) : (

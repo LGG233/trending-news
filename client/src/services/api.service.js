@@ -43,6 +43,15 @@ class ApiService {
    * @returns {Promise<AxiosResponse<T>>}
    */
   post = (url, data, config) => request('post', url, { data, ...config });
+
+  /**
+   * @template T
+   * @param {string} url
+   * @param {any} data
+   * @param {AxiosRequestConfig} config
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  delete = (url, data, config) => request('delete', url, { data, ...config });
 }
 
 export default ApiService = new ApiService();

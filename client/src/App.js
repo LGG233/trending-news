@@ -14,6 +14,7 @@ import {
   ForgotUsername,
   ForgotPassword,
   ResetPassword,
+  TopicSearch, TopicEntry
 } from './components';
 import { ApiService } from './services';
 
@@ -79,7 +80,6 @@ class App extends Component {
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-6">
-              <h3>Welcome, {this.state.user.username}!</h3>
             </div>
           </div>
         )}
@@ -95,10 +95,12 @@ class App extends Component {
                 <ForgotUsername path="/forgot-username" />
                 <ForgotPassword path="/forgot-password" />
                 <ResetPassword path="/reset-password" />
-                <UserProfile path="/userProfile" user={this.state.user} />
+                <UserProfile path="/userProfile" getUser={this.getUser} user={this.state.user} />
                 <PubEntry path="/pub-entry" />
                 <PubDisplay path="pub-display" />
                 <PubSearch path="/pub-search" />
+                <TopicSearch path="/topics-search" />
+                <TopicEntry path="/topics-entry" getUser={this.getUser} />
               </Router>
             </div>
           </div>

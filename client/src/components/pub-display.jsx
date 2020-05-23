@@ -7,6 +7,7 @@ class PubDisplay extends Component {
     super(props);
     this.state = {
       data: {
+        _id: '',
         name: '',
         twitterHandle: '',
         redirectTo: false,
@@ -28,17 +29,9 @@ class PubDisplay extends Component {
         this.setState({ redirectTo: true });
       }
     );
-    console.log(this.state.data);
   }
 
   render() {
-    // const { name, twitterHandle } = this.props.data;
-    // return (
-    //   <div>
-    //     <PubShowData name={name} twitterHandle={twitterHandle} />
-    //   </div>
-    // );
-
     const isLoaded = this.state.loaded;
     if (!isLoaded) {
       return (
@@ -64,10 +57,10 @@ class PubDisplay extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.data.map((pubs) => (
-                <tr>
-                  <th scope="row">{pubs.name}</th>
-                  <td>{pubs.twitterHandle}</td>
+              {this.state.data.map((pub) => (
+                <tr key={pub._id}>
+                  <th scope="row">{pub.name}</th>
+                  <td>{pub.twitterHandle}</td>
                   <td>
                     <button className="btn btn-sm btn secondary add-mypubs" onClick={() => this.addMyPubs()}>
                       Add to My Pubs

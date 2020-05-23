@@ -10,6 +10,7 @@ const username = require('./routes/username');
 const { TokenService } = require('./services');
 const user = require('./routes/user');
 const pubs = require('./routes/pubs');
+const topics = require('./routes/topics');
 const cors = require('cors');
 
 // Middleware
@@ -38,6 +39,7 @@ app.use(async (req, res, next) =>
 // protected routes
 app.use('/user', user);
 app.use('/pubs', pubs);
+app.use('/topics', topics);
 
 // starting server
 app.listen(PORT, () => {
