@@ -9,9 +9,8 @@ const userSchema = new Schema({
   topics: { type: [String], unique: false, required: false },
   publications: [
     {
-      id: { type: Number, unique: true, sparse: true, required: true },
       name: { type: String, unique: false, required: false },
-      twitterHandle: { type: String, unique: true, sparse: true, required: true },
+      twitterHandle: { type: String, unique: false, sparse: true, required: false },
     },
   ],
   savedArticles: [

@@ -17,7 +17,7 @@ class MyPublications extends Component {
               <th scope="col">Twitter Handle</th>
               <th>
                 <button className="btn btn-link text-secondary" onClick={() => this.editPublications()}>
-                  Edit My Pubs
+                  Add New Publications
                 </button>
               </th>
             </tr>

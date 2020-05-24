@@ -22,11 +22,16 @@ router.post('/', (req, res, next) => {
     } else if (!user) {
       console.log('400', user);
       res.sendStatus(400);
-    } else if (user.publications.includes(req.body.name)) {
-      console.log('409', user);
-      res.sendStatus(409);
     } else {
+      for (let i = 0; i < user.publications.length; i++)
+        if (user.publications[i].twitterHandle === req.body.twitterHandle) {
+          res.sendStatus(409);
+          console.log('already in db');
+          return;
+        }
       console.log('200', user);
+      console.log('User Publications: ', user.publications);
+      console.log('Twitter Handle', req.body.twitterHandle);
       console.log('Name: ', user.name);
       User.updateOne(
         { username },
@@ -47,23 +52,6 @@ router.post('/', (req, res, next) => {
 });
 
 router.post('/pubs', (req, res, next) => {});
-
-router.post('/', (req, res, next) => {
-  Pub.findOne({ twitterHandle: req.body.twitterHandle }, (err, pub) => {
-    if (err) {
-      console.log('here is the error: ', err);
-    } else if (pub) {
-      console.log('That publication is already in the database');
-    } else {
-      Pub.create({
-        name: req.body.name,
-        twitterHandle: req.body.twitterHandle,
-      }).then(function (dbPub) {
-        res.json(dbPub);
-      });
-    }
-  });
-});
 
 router.get('/searchPubTitle/:title', (params, res, next) => {
   var regex = new RegExp(params.params.title, 'i');
