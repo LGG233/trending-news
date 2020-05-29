@@ -9,7 +9,7 @@ class MyPublications extends Component {
 
   deletePubs(value) {
     let publication = value;
-    ApiService.delete('pubs', {
+    ApiService.delete('pubs/myPubs', {
       name: publication.name,
       twitterHandle: publication.twitterHandle,
     })

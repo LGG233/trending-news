@@ -33,7 +33,7 @@ class PubDisplay extends Component {
 
   addMyPubs(value) {
     let publication = value;
-    ApiService.post('pubs', {
+    ApiService.post('pubs/myPubs', {
       name: publication.name,
       twitterHandle: publication.twitterHandle,
     })

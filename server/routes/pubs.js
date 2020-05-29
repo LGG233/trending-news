@@ -15,6 +15,23 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+  Pub.findOne({ twitterHandle: req.body.twitterHandle }, (err, pub) => {
+    if (err) {
+      console.log('here is the error: ', err);
+    } else if (pub) {
+      console.log('That publication is already in the database');
+    } else {
+      Pub.create({
+        name: req.body.name,
+        twitterHandle: req.body.twitterHandle,
+      }).then(function (dbPub) {
+        res.json(dbPub);
+      });
+    }
+  });
+});
+
+router.post('/myPubs', (req, res, next) => {
   const username = req.user['cognito:username'];
   User.findOne({ username }, (err, user) => {
     if (err) {
@@ -47,7 +64,7 @@ router.post('/', (req, res, next) => {
   });
 });
 
-router.delete('/', (req, res, next) => {
+router.delete('/myPubs', (req, res, next) => {
   const username = req.user['cognito:username'];
   User.findOne({ username }, (err, user) => {
     if (err) {
