@@ -26,13 +26,9 @@ router.post('/', (req, res, next) => {
       for (let i = 0; i < user.publications.length; i++)
         if (user.publications[i].twitterHandle === req.body.twitterHandle) {
           res.sendStatus(409);
-          console.log('already in db');
+          console.log('That pub is already in your profile');
           return;
         }
-      console.log('200', user);
-      console.log('User Publications: ', user.publications);
-      console.log('Twitter Handle', req.body.twitterHandle);
-      console.log('Name: ', user.name);
       User.updateOne(
         { username },
         {
@@ -76,20 +72,6 @@ router.delete('/', (req, res, next) => {
     }
   });
 });
-
-//       User.updateOne(
-//         { username },
-//         {
-//           $pull: {
-//             publications: {
-//               name: req.body.name,
-//               twitterHandle: req.body.twitterHandle,
-//             },
-//           },
-//         },
-//         ).then(function (user) {
-//           console.log(user);
-//           res.json(user);
 
 router.get('/searchPubTitle/:title', (params, res, next) => {
   var regex = new RegExp(params.params.title, 'i');
