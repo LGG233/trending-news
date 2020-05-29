@@ -20,7 +20,7 @@ class UserProfile extends Component {
           <h2>{username}'s Profile</h2>
           <MyInfo name={name} username={username} email={email} />
           <br></br>
-          <MyPublications publications={publications} />
+          <MyPublications publications={publications} getUser={this.props.getUser} />
           <br></br>
           <MyTopics topics={topics} getUser={this.props.getUser} />
         </div>

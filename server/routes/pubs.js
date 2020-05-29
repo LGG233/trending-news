@@ -51,7 +51,45 @@ router.post('/', (req, res, next) => {
   });
 });
 
-router.post('/pubs', (req, res, next) => {});
+router.delete('/', (req, res, next) => {
+  const username = req.user['cognito:username'];
+  User.findOne({ username }, (err, user) => {
+    if (err) {
+      res.sendStatus(500);
+    } else if (!user) {
+      console.log('400', user);
+      res.sendStatus(400);
+    } else {
+      User.updateOne(
+        { username },
+        {
+          $pull: {
+            publications: {
+              name: req.body.name,
+              twitterHandle: req.body.twitterHandle,
+            },
+          },
+        }
+      ).then(function (user) {
+        res.json(user);
+      });
+    }
+  });
+});
+
+//       User.updateOne(
+//         { username },
+//         {
+//           $pull: {
+//             publications: {
+//               name: req.body.name,
+//               twitterHandle: req.body.twitterHandle,
+//             },
+//           },
+//         },
+//         ).then(function (user) {
+//           console.log(user);
+//           res.json(user);
 
 router.get('/searchPubTitle/:title', (params, res, next) => {
   var regex = new RegExp(params.params.title, 'i');
