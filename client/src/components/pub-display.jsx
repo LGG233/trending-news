@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ApiService } from '../services';
-import { Link } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 
 class PubDisplay extends Component {
   constructor(props) {
@@ -31,6 +31,24 @@ class PubDisplay extends Component {
     );
   }
 
+  addMyPubs(value) {
+    let publication = value;
+    ApiService.post('pubs/myPubs', {
+      name: publication.name,
+      twitterHandle: publication.twitterHandle,
+    })
+      .then((response) => {
+        if (response.statusText === 'OK') {
+          this.props.getUser();
+          navigate('/userProfile');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  // };
+
   render() {
     const isLoaded = this.state.loaded;
     if (!isLoaded) {
@@ -59,10 +77,14 @@ class PubDisplay extends Component {
             <tbody>
               {this.state.data.map((pub) => (
                 <tr key={pub._id}>
-                  <th scope="row">{pub.name}</th>
+                  <th scope="row">{pub.name} </th>
                   <td>{pub.twitterHandle}</td>
                   <td>
-                    <button className="btn btn-sm btn secondary add-mypubs" onClick={() => this.addMyPubs()}>
+                    <button
+                      className="btn btn-sm btn secondary add-mypubs"
+                      value={pub}
+                      onClick={this.addMyPubs.bind(this, pub)}
+                    >
                       Add to My Pubs
                     </button>
                   </td>
